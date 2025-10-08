@@ -1,0 +1,23 @@
+body{
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: white;
+    background-image: url(../src/images/imagensYoga.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+p {
+    color: #333;
+}
+
+img {
+    width: 150px;
+}
+video {
+    width: 100%;
+}

@@ -1,0 +1,17 @@
+body{
+    /*background-color: aquamarine;
+    */
+    background-image: url(../src/images/imagemTeste3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1{
+    color: #dc143c;
+    background-color: blue;
+}
+
+p{
+    color: yellow;
+    background-color: black;
+}
