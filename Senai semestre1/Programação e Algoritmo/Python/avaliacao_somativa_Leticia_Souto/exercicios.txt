@@ -1,0 +1,74 @@
+questão 1) input (b).
+questão 2) exibe informação na tela (a).
+questão 3) exibe os números de 0 a 4 (b).
+
+questão 4) 
+1. indicar o que o programa irá fazer.
+2. criar uma função que contenha:
+3. uma variável pedindo o valor da compra para o usuário.
+4. criar condição.
+5. uma validando se o número é maior que 100.
+6. dentro dessa condição colocar uma variável com o valor do desconto e outra do valor da compra com desconto.
+7. se o valor for maior que 100, mostrar o valor da compra com o desconto.
+8. se não mostrar somente o valor da compra e dizer que não teve desconto.
+9. chamar a função.
+
+questão 5)
+1. informar o que  programa irá fazer.
+2. criar uma variável para cada preço de prato.
+3. criar uma variável somando todos os preços.
+4. criar condição, validando se a soma é maior que 200.
+5. dentro da condição if, criar uma variável do valor com desconto.
+6. se a soma for maior que 200, mostrar para o usuário o valor com desconto.
+7. se a soma for menor que 200, mostar para o usuário somente o valor da soma e dizer que não teve desconto.
+
+questão 6)
+1. informar o que o programa irá fazer.
+2. criar uma função e colocar as seguintes informações.
+3. variável com valor 0 
+4. criar um for in range que repita 5 vezes.
+5. criar uma variável pedindo a nota para o usuário.
+6. somar a variavel com o valor 0 com a nota do usuário, fazendo a variavel passar a ter um novo valor toda vez que o usuário colocar uma nova nota.
+7. criar uma variável calculando a média.
+8. criar condição, validando se a média está dentro do estado de aprovação.
+9. se estiver mostrar para o usuário que ele foi aprovado.
+10. se não, mostrar para o usuário que ele foi reprovado.
+11. se a média ultrapassar de 10, mostar um erro.
+12. chamar a função.
+
+questão 7) 
+1. indicar o que o programa irá fazer.
+2. definir uma função para não ficar repetindo a conta.
+3. pedir para  usuário definir o peso.
+4. pedir para o usuário definir a altura.
+5. criar variável fazendo a conta do imc
+6. validar o o peso do usuário, se for mais que 18.5 
+7. mostrar que ele está abaixo do peso.
+8. se for maior ou igual a 18.5 e menor que 24.9.
+9. mostrar que ele está no peso ideal.
+10. se for mais que isso.
+11. mostar que ele está acima do peso.
+
+questão 8)
+1. informar o que o programa irá fazer.
+2. criar uma função com o parâmetro n, e mostrar um print saudando o usuário
+3. fora da função criar uma variável pedindo o nome do usuário.
+4. chamar a função colando dentro do parâmetro a variável usada para solicitar o nome do usuário.
+
+
+
+questão 9)
+1. informar o que o programa irá fazer.
+2. criar uma variável solicitando um número inteiro para o usuário. 
+3. criar um for x in range com o parâmetro de 0 até o número que o usuário escolheu.
+4. somar o x com mais 1, para ele ir alterando.
+5. mostrar o valor de x para o usuário.
+
+questão 10)
+1. indicar o que o programa irá fazer.
+2. criar uma função com as seguintes informações:
+3. uma variável pedindo o número inteiro para o usuário.
+4. uma condição valindando se a divisão por 3 e 5 vai ter resto 0.
+5. se for, mostar um print que o número é divisível.
+6. se não, mostar um print que o número não é divisível.
+7. chamar a função.
