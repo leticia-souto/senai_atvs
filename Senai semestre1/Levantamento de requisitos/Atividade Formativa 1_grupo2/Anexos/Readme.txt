@@ -1,0 +1,9 @@
+O sistema deverá ser responsável pela reserva de mesas em um restaurante, de forma interativa e completamente confiável, podendo ser instalado em diversos dispositivos e sistemas operacionais, com modos de acessibilidade e apresentar rapidez e estabilidade. O sistema tem funcionalidades de pagamento inteiramente completo e sem erros. Além de ser capaz de gerenciar a disponibilidade de mesas e a quantidade de clientes, calculando o valor a ser pago de acordo com eventos que podem ocorrer no dia da reserva, como descontos e apresentações ao vivo. Possui a capacidade de compreender o mapa e posições das mesas e estrutura do restaurante. 
+
+O sistema de Reserva para restaurante foi estruturado com foco em eficiência operacional, experiência do usuário e confiabilidade, sendo planejado para atender tanto aos clientes do restaurante quanto à equipe de gestão. Os requisitos e regras de negócio foram levantados em reuniões e entrevistas, garantindo que o sistema atenda às necessidades reais do ambiente onde será implementado. 
+
+A definição clara dos requisitos funcionais e não funcionais, das regras de negócio e das restrições técnicas garante que o sistema tenha uma base sólida para desenvolvimento, testes e futuras evoluções. A documentação detalhada facilita a comunicação entre os membros da equipe de desenvolvimento, promovendo transparência e alinhamento de expectativas. 
+
+Por fim, este projeto reforça a importância da engenharia de requisitos no desenvolvimento de sistemas, demonstrando como uma boa análise inicial pode evitar retrabalho e garantir um produto final confiável e centrado no usuário. 
+
+Foi pensado por um dono de restaurante e desenvolvido por João Lucas de Campos Gonçalves, José Arthur Armelin de Paula, Letícia Roberta Oliveria Souto e Letícia Caristo dos Santos. 
