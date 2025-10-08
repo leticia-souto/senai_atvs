@@ -1,0 +1,85 @@
+// const pessoa ={
+//     nome: "João", 
+// 	idade: 30, 
+// 	falar: function(){ 
+//         console.log(`Olá, minha idade é ${this.idade}`)
+//     }
+// };
+
+// pessoa.falar();
+
+// const pessoa1 ={
+//     nome: " Maria", 
+// 	idade: 26, 
+// 	falar: function(){ 
+//         console.log(`Olá, minha idade é ${this.idade}`)
+//     }
+// };
+
+
+// const pessoa2 ={
+//     nome: "Renato", 
+// 	idade: 18, 
+// 	falar: function(){ 
+//         console.log(`Olá, minha idade é ${this.idade}`)
+//     }
+// };
+
+
+// const pessoa3 ={
+//     nome: "Ana", 
+// 	idade: 42, 
+// 	falar: function(){ 
+//         console.log(`Olá, minha idade é ${this.idade}`)
+//     }
+// };
+
+// pessoa1.falar();
+// pessoa2.falar();
+// pessoa3.falar();   
+
+// class Pessoa{
+// 	constructor(nome, idade){
+// 	this.nome = nome;
+// 	this.idade = idade;
+// }}
+
+// class Pessoa{
+// 	constructor(nome, idade){
+// 	this.nome = nome;
+// 	this.idade = idade;
+// }
+
+// saudacao(){
+// 	return console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+// }}
+
+// const pessoa1 = new Pessoa("João",25); 
+
+// pessoa1.saudacao(); 
+
+class Conta{
+	constructor(titular, saldo){
+	this.titular = titular;
+	this.saldo = saldo;
+}
+
+depositar(valor){
+	this.saldo += valor
+    console.log(`Depósito realizado. Saldo atual é igual ${this.saldo}`)
+
+}
+
+sacar(valor){
+    if (valor <= this.saldo){
+    this.saldo -= valor
+    console.log(`Saque realizado. O saldo atual é igual a ${this.saldo}`)
+    }else {
+    console.log(`Impossível realizar o saque. Saldo menor que o valor do saque.`)}
+}}
+
+let conta1 = new Conta("Celso", 0)
+conta1.depositar(200)
+conta1.sacar(250)
+
+
