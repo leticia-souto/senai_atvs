@@ -1,0 +1,31 @@
+body{
+    background-color: whitesmoke;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+h1{
+    background-color: whitesmoke;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../src/images/img_titulo1.jpg);
+}
+
+h2{
+    background-color: rgb(249, 155, 250);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url(../src/images/img_titulo2.jpg)
+    ;
+}
+
+img {
+    width: 150px;
+}
+video {
+    width: 100%;
+}
+

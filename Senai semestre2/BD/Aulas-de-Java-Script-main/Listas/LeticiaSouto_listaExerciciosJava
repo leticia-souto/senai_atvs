@@ -1,0 +1,277 @@
+// //Exercício1
+
+// let numero1 = 10
+// let numero2 = 4
+
+// console.log("O resultado da soma é", numero1 + numero2)
+
+// //Exercicio 2
+// let altura = 10
+// let base = 15
+// let area = altura * base
+
+// console.log("A área do retângulo é de", area)
+
+// //Exercício 3
+// let celcius = 25
+// let fahrenheit = celcius * (9/5) + 32
+
+// console.log("A temperatura em fahrenheit é de", fahrenheit)
+
+// //Exercício 4
+// let nota1 = 10
+// let nota2 = 7
+// let nota3 = 10
+// let media = (nota1 + nota2 + nota3) / 3
+
+// console.log("A média das três notas é", media)
+
+// Exercício 5
+// let numero1 = 10
+// let numero2 = 25
+// let multiplicacao = numero1 * numero2
+
+// console.log("Olá, o resultado da sua multiplicação é de", multiplicacao)
+
+// Exercício 6
+// let numero = 0
+
+// if (numero > 0) {
+//     console.log("O número digitado é positivo.")
+// }   else if (numero < 0) {
+//     console.log("O número digitado é negativo.")
+// }   else {
+//     console.log("O número digitado é zero.")
+// }
+
+//Exercício 7
+// let idade = 17
+
+// if (idade >= 18) {
+//     console.log("Usuário maior de idade.")
+// }   else {
+//     console.log("Usuário menor de idade.")
+// }
+
+//Exercício 8
+// let numero = 8
+// let divisao = numero % 2
+
+// if (divisao == 0) {
+//     console.log(`O número ${numero} é par.`)
+// }   else {
+//     console.log(`O número ${numero} é ímpar.`)
+// }
+
+//Exercício 9
+// let nota1 = 10
+// let nota2 = 
+// let media = (nota1 + nota2) / 2
+
+// if (media <0 ||  media > 10) {
+//     console.log("Nota inválida!")
+// }   else if (media >= 7) {
+//     console.log(`Você foi aprovado com a média ${media}`)
+// }   else if (media < 7) {
+//     console.log(`Você foi reprovado com a média ${media}.`)
+// }
+
+//Exercício 10
+// let numero1 = 0
+// let numero2 = 5
+// let numero3 = 1
+
+// if (numero1 == numero2 && numero2 == numero3) {
+//     console.log("Todos os números são iguais.")
+// }   else if (numero1 <= numero2 && numero2 < numero3) {
+//     console.log(`O ${numero3} é o maior número.`)
+// }   else if (numero1 < numero2){
+//     console.log(`O ${numero2} é o maior número.`)
+// }   else {
+//     console.log(`O ${numero1} é o maior número.`)
+// }
+ 
+//Exercício 11
+// let idade = 60
+
+
+// switch (true) {
+//     case idade >= 0 && idade <12:
+//         console.log("A idade verificada é de uma criança.")
+//         break
+//     case idade >= 12 && idade <18:
+//         console.log("A idade verificada é de uma adolescente.")
+//         break
+//     case idade >= 18 && idade <60:
+//         console.log("A idade verificada é de um adulto")
+//         break
+//     default:
+//         console.log("A idade verificada é de um idoso.")
+// }
+
+//Exercício 12
+// let ano = 2024
+
+// switch (true) {
+//     case ano % 4 == 0 || ano % 400 == 0 && ano % 100 != 0:
+//         console.log(`O ano ${ano} é um ano bissexto.`)
+//         break
+//     default:
+//         console.log(`O ano ${ano} não é bissexto.`)
+// }
+
+//Exercício 13
+// let numero1 = 10
+// let numero2 = 2
+// let operacao = "-"
+
+// switch (true) {
+//     case operacao == "+":
+//         console.log(`O resultado da operação é ${numero1 + numero2}`)
+//         break
+//     case operacao == "*":
+//         console.log(`O resultado da operação é ${numero1 * numero2}`)
+//         break
+//     case operacao == "-":
+//         console.log(`O resultado da operação é ${numero1 - numero2}`)
+//         break
+//     case operacao == "/":
+//         console.log(`O resultado da operação é ${numero1 / numero2}`)
+//         break
+// }
+
+//Exercicio 14
+// let dia = 7
+
+// switch (true){
+//     case dia == 1:
+//         console.log("O dia da semana é domingo.")
+//         break
+//     case dia == 2:
+//         console.log("O dia da semana é segunda.")
+//         break
+//     case dia == 3:
+//         console.log("O dia da semana é terça.")
+//     case dia == 4:
+//         console.log("O dia da semana é quarta.")
+//         break
+//     case dia == 5:
+//         console.log("O dia da semana é quinta.")
+//         break
+//     case dia == 6:
+//         console.log("O dia da semana é sexta.")
+//         break
+//     case dia == 7:
+//         console.log("O dia da semana é sábado.")
+//         break
+// }
+
+//Exercício 15
+// let nota = 4
+
+// switch (true) {
+//     case nota <0 && nota <10:
+//         console.log("Nota inválida.")
+//     case nota == 0:
+//         console.log(`Sua nota ${nota} convertida para conceito é F.`)
+//         break
+//     case nota >0 && nota <4:
+//         console.log(`Sua nota ${nota} convertida para conceito é E.`)
+//         break
+//     case nota >=4 && nota <6:
+//         console.log(`Sua nota ${nota} convertida para conceito é D.`)
+//         break
+//     case nota >= 6 && nota <8 :
+//         console.log(`Sua nota ${nota} convertida para conceito é C.`)
+//         break
+//     case nota >=8 && nota <10:
+//         console.log(`Sua nota ${nota} convertida para conceito é B.`)
+//         break
+//     case nota == 10:
+//         console.log(`Sua nota ${nota} convertida para conceito é A.`)
+//         break
+// }
+
+//Exercício 16
+// for (let i=1; i < 11; i++) {
+//     console.log(i)
+// }
+
+//Exercício 17
+// let soma = 0
+// for (let i=1; i < 101; i++) {
+//     soma += i
+// }   console.log(`A soma dos números de 1 a 100 é ${soma}`)
+
+//Exercício 18
+// let numero = 7
+
+// for (let i=1; i < 11; i++) {
+//     console.log(`${numero} x ${i} = ${numero*i}`)
+// }   
+
+//Exercício 19
+// let numero = 0
+
+// while (numero < 11) {
+//     console.log(numero)
+//     numero++
+// }
+
+//Exercício 20
+// for (let i=2; i < 51; i=i+2 ){
+//     console.log(i)
+// }
+
+//Exercício 21
+// let numero = 5
+// let resultado = 1
+
+// for (let i= numero ; i > 0; i-- ) {
+//     resultado = resultado * i 
+// }   console.log(`resultado = ${resultado}`)
+
+//Exercício 22
+// let lista = ["Heloisa", "Leticia", "Monica", "Paula", "Giovana"]
+
+// for(let i = 0; i < 5; i++) {
+//     console.log(lista[i])
+// }
+    
+//Exercício 23
+// let lista = [1,2,3,4,5,6,7,8,9,10]
+
+// 
+// }
+
+//Exercício 24
+// let numeros = [1,2,3,4,5,6,7,8,9,10]
+// let resultado = 0
+
+// for(let i = 0; i < 11; i++) {
+//     resultado = resultado + i
+// }   console.log(`A soma de todos os valores são ${resultado}`)
+
+//Exercício 25
+// let numeros = [1,2,3,4,5,6,7,8,9,10]
+// let maior = numeros[0]
+
+// for (let i = 0; i < numeros.length; i++) {
+//     if (maior < numeros[i]) {
+//         maior = numeros[i]
+//     }
+// }   console.log(`O maior número da lista é ${maior}`)
+
+//Exercício 26
+// let lista = ["Heloisa" , "Monica", "Paula"]
+// console.log(lista.includes("Monica")); 
+
+//Exercício 27
+// let nomes = ["Heloisa" , "Monica", "Paula"]
+// nomes.push("Giovana")
+// console.log(nomes)
+
+//Exercício 28
+// let nomes = ["Heloisa" , "Monica", "Paula", "Livia", "Giovana"]
+// nomes.pop()
+// console.log(nomes)
