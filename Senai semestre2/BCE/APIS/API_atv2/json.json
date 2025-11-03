@@ -1,0 +1,81 @@
+1- Crie um objeto JSON que represente um único aluno. O objeto deve conter as seguintes chaves e tipos de dados:
+matricula: (Number) Ex: 10234
+nome_completo: (String) Ex: "José da Silva"
+email: (String) Ex: "jose.silva@aluno.senai.br"
+idade: (Number) Ex: 19
+bolsista: (Boolean) Ex: true
+media_final: (Number, pode ser decimal) Ex: 8.5
+curso: (Null) O aluno ainda não foi matriculado em um curso.
+
+{
+    "matricula":25537,
+    "nome_completo": "Moniquinha Cotrinho Manfrinatinho",
+    "email": "manfrinatinho.moniquinha@gmail.com",
+    "idade": 12,
+    "bolsista": true,
+    "media_final":10,
+    "curso": null 
+}
+
+2- Crie um objeto JSON que represente uma "Turma". A estrutura deve conter:
+Uma chave codigo_turma (String).
+Uma chave periodo (String, ex: "Manhã").
+Uma chave professor cujo valor seja um outro objeto JSON contendo nome e area (ex: "Desenvolvimento Back-End").
+Uma chave alunos cujo valor seja um array (lista). Dentro desse array, adicione dois objetos "Aluno", cada um com as chaves nome e matricula.
+
+{
+    "codigo_turma": "DETS-21",
+    "perido": "matutino",
+    "professor": {
+        "nome": "Ricardinho",
+        "area": "Desenvolvimento Back-end"
+    },
+    "alunos": [
+        {"nome": "Lets",
+        "matricula": 52235,
+        "nome": "Moniquete",
+        "matricula": 1234
+        }]
+}
+
+3- Crie um objeto JSON que represente um "Pedido" em um site de e-commerce. A estrutura deve ser a seguinte:
+Chave id_pedido (String ou Number).
+Chave data_pedido (String, ex: "2024-10-27T10:30:00").
+Chave status (String, ex: "Processando").
+Chave cliente: O valor deve ser um objeto com nome e email.
+Chave endereco_entrega: O valor deve ser um objeto com rua, numero, cidade e cep.
+Chave itens: O valor deve ser um array de objetos. Cada objeto dentro deste array representa um item comprado e deve ter:
+-id_produto (String)
+-nome_produto (String)
+-quantidade (Number)
+-preco_unitario (Number, decimal)
+
+Adicione pelo menos dois itens diferentes ao pedido.
+
+{
+    "id_pedido": 22356,
+    "data_pedido": "2024-12-30 T22:30:00",
+    "status": "produzindo",
+    "cliente": {
+        "nome": "Moniquinha",
+        "email": "manfrinatinho.moniquinha@gmail.com"
+    },
+    "endereco":{
+        "rua": "R. das marias chiquinhas",
+        "numero": "586",
+        "cidade": "Chiquitas",
+        "cep": "80-960-540"
+    },
+    "itens":[
+        {"id_produto": "mcvnkdnfjhgndrgd",
+        "nome_produto": "piranhinhas de galinhazinhas amarelinhas",
+        "quantidade_produto": 85,
+        "preco_unitario": 3.00 },
+
+        {"id_produto": "slekfnweislrsdf",
+        "nome_produto": "abacatinhos verdinhos com cajuzinhos amarelinhos de plastiquinho",
+        "quantidade_produto": 60,
+        "preco_unitario": 7.00
+        }
+    ]
+}
