@@ -1,0 +1,8 @@
+senha:
+
+18061864Le!
+
+usuario: leticiasouto_db_user
+
+caminho:
+mongodb+srv://leticiasouto_db_user:18061864Le!@biblioteca.o4ggnim.mongodb.net/?appName=Biblioteca
