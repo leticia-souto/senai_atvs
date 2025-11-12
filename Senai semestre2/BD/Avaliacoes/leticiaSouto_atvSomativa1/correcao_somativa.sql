@@ -1,4 +1,6 @@
 CREATE DATABASE db_saber_e_cia_b;
+
+
 drop database db_saber_e_cia_b;
 
 USE db_saber_e_cia_b;
@@ -22,6 +24,11 @@ INSERT INTO tbl_livro(isbn, titulo_livro, ano_publicacao, editora)
 values ('978-85-325-3078-3', 'Harry Potter e a Pedra Filosofal', '1997', 'Rocco'),
 		('978-85-7126-061-0', 'Dom Casmurro', '1901', 'Editora Clássica');
         
+INSERT INTO tbl_livro (isbn, titulo_livro, ano_publicacao, editora)
+VALUES ('978-85-325-2306-8', 'A Revolução dos Bichos', 1945, 'Companhia das Letras'),
+('978-0-00-711711-0', '1984', 1949, 'Penguin Books'),
+('978-85-325-1997-9', 'Eu, Robô', 1950, 'Aleph');
+
 select * from tbl_livro;
 
 CREATE TABLE tbl_autor(
@@ -31,7 +38,10 @@ CREATE TABLE tbl_autor(
 );
 
 INSERT INTO tbl_autor(nome_autor, nacionalidade)
-    VALUES ('Daniel Manoel','Brasileiro');
+    VALUES ('Daniel Manoel','Brasileiro'),
+    ('Clarice Lispector', 'Brasileira'),
+    ('George Orwell', 'Britanico'),
+    ('Isaac Asimov', 'Russo-Americano');
     
 insert into tbl_autor (nome_autor, nacionalidade)
 values ('Machado de Assis', 'Brasileiro');
@@ -51,6 +61,8 @@ CREATE TABLE tbl_autor_livro(
     CONSTRAINT fk_id_autor_tbl_autor_livro FOREIGN KEY (id_autor)
         REFERENCES tbl_autor(id_autor)
 );
+
+select * from autor_livro;
 
 CREATE TABLE tbl_exemplar(
     id_exemplar INTEGER PRIMARY KEY,
@@ -116,3 +128,143 @@ ALTER TABLE tbl_livro ADD COLUMN genero VARCHAR(50);
 
 drop table tbl_livro;
 
+#####################################################################################################################################################
+
+select round (19.99 * 1.05, 2);
+select 19.99 * 1.05;
+select floor(19.99 * 1.05);
+select ceil(19.99*1.05);
+
+########################################################################################################################################################
+
+select count(*) as total_mebros
+from tbl_membro;
+
+select min(ano_publicacao) as livro_mais_antigo
+from tbl_livro;
+
+select max(ano_Publicacao) as livro_mais_antigo
+from tbl_livro;
+
+select floor(AVG(ano_publicacao)) as media_dos_anos
+from tbl_livro;
+
+############################################################################################################################################################
+
+select * from tbl_membro where nome_membro like "%Silva";
+select * from tbl_livro where ano_publicacao between 1939 and 1945;
+select * from tbl_livro where editora in ("Rocco", "Aleph");
+select * from tbl_livro where editora not in ("Rocco", "Aleph");
+
+############################################################################################################################################################
+
+select concat(upper(nome_membro), '-', telefone)
+as contato from tbl_membro;
+
+select count(*) as autores_brasileiros from tbl_autor
+where nacionalidade like 'Brasileir_';
+
+select min(ano_publicacao) as livro_mais_antigo from tbl_livro where editora = "Aleph";
+ 
+ ###############################################################################################################################################
+ 
+  select editora, count(isbn) as quantidade_livros
+ from tbl_livro
+ group by editora;
+ 
+ 
+ ##############################################################################################################################################################
+ 
+ insert into tbl_livro(isbn, titulo_livro, ano_publicacao, editora)
+ values('999-987654-987', 'Esse é meu livro', 2020, 'Rocco'),
+ ('999-987654-988', 'Esse é meu livro', 2020, 'Rocco'),
+ ('999-987654-989', 'Esse é meu livro', 2020, 'Rocco');
+ 
+ ####################################################################################################################################################################
+ 
+ select titulo_livro,
+	max(ano_publicacao) as ano_publicacao,
+    editora
+from tbl_livro
+group by editora;
+
+
+#######################################################################################################################################################################
+
+select editora, count(isbn) as quantidade_livros
+from tbl_livro
+group by editora
+having count(isbn) >= 2;
+
+#######################################################################################################################################################################
+
+select nome_autor as nome , 'Autor' as tipo
+from tbl_autor
+union
+select nome_membro as nome, 'Membro' as tipo
+from tbl_membro;
+
+########################################################################################################################################################################
+
+select L.titulo_livro, A.nome_autor
+from tbl_livro L
+cross join tbl_autor A;
+
+########################################################################################################################################################################
+
+select L.titulo_livro, AL.id_autor
+from tbl_livro L
+inner join tbl_autor_livro AL
+	on L.isbn = AL.isbn;
+
+############################################################################################################################################################################
+INSERT INTO tbl_autor_livro(isbn, id_autor) 
+VALUE ('123456789', '1'), 
+('978-0-00-711711-0', '2'),
+('978-85-325-1997-9', '3'),
+('978-85-325-2306-8', '4'),
+('978-85-325-3078-3', '5'),
+('978-85-7126-061-0', '6');
+
+select * from tbl_livro;
+select*from tbl_autor;
+
+#############################################################################################################################################################################
+
+select L.titulo_livro, A.nome_autor
+from tbl_livro L
+
+inner join tbl_autor_livro AL
+	on L.isbn = AL.isbn
+    
+inner join tbl_autor A
+	on AL.id_autor = A.id_autor;
+    
+#############################################################################################################################################################################
+
+select titulo_livro
+from tbl_livro
+where isbn in(
+	select isbn from tbl_autor_livro where id_autor in(
+		select id_autor from tbl_autor
+        where nacionalidade like 'Brasileir_'
+        )
+);
+
+###############################################################################################################################################################################
+
+select nome_autor
+from tbl_autor A
+where exists (
+	select 1 from tbl_autor_livro AL
+    where AL.id_autor = A.id_autor
+);
+
+################################################################################################################################################################################
+
+select titulo_livro, ano_publicacao
+from tbl_livro
+where ano_publicacao < any (
+	select ano_publicacao from tbl_livro
+    where editora = 'Aleph'
+);
