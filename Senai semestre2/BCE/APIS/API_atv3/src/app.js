@@ -50,6 +50,7 @@ app.get("/livros/:isbn", (req,res) =>{
     res.status(200).json(livros[index])
 }) 
 
+/*adiciona uma informação */
 app.post ("/livros", (req,res) => {
     livros.push(req.body)
     res.status(201).json(req.body)
@@ -66,5 +67,11 @@ app.put ("/livros/:isbn", (req,res) => {
 
     res.status(200).json(livros[index])
 
+})
+
+app.delete("/livros/:isbn", (req,res) => {
+    const index = buscarLivro(req.params.isbn)
+    livros.splice(index, 1)
+    res.status(200).json(livros)
 })
 export default app
