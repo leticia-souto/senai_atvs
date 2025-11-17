@@ -319,3 +319,88 @@ where id_membro in (
 	select id_membro from tbl_emprestimo
     where data_devolucao_efetiva is null
 );
+
+#####################################################################################################################################################################################
+
+start transaction;
+update tbl_membro set telefone = '11-99999-0000' where id_membro = 101;
+commit;
+
+#####################################################################################################################################################################################
+
+start transaction;
+
+insert into tbl_membro (id_membro, nome_membro, endereco, telefone)
+values(999, 'membro teste', 'rua das moniquinhas', '11-96578-5524');
+/*o membro teste existe aqui dentro da transação*/
+
+select * from tbl_membro;
+
+rollback;
+/*O membro teste foi desfeito e nunca existiu*/
+
+#####################################################################################################################################################################################
+
+start transaction;
+insert into tbl_membro (id_membro, nome_membro, endereco, telefone)
+values(667, 'Moniquers onix', 'Rua das pauletes pdv', '11-99648-5885');
+
+savepoint ponto_A;
+
+insert into tbl_membro (id_membro, nome_membro, endereco, telefone)
+values(777, 'Heloisers Paixones', 'Rua das moniquetes', '11-99648-9999');
+
+
+/*esse comando exclui o que foi criado depois do savepoint e salva o que estava antes*/
+rollback to savepoint ponto_A; 
+
+commit;
+
+######################################################################################################################################################################################
+
+create view V_Relatorio_Emprestimo as select
+	M.nome_membro,
+	L.titulo_livro,
+	E.data_emprestimo,
+	E.data_devolucao
+from tbl_membro M
+join tbl_emprestimo E on M.id_membro = E.id_membro
+join tbl_exemplar EX on E.id_exemplar = E.id_exemplar
+join tbl_livro L on EX.isbn = L.isbn;
+
+select * from V_Relatorio_Emprestimo
+where nome_membro = 'Ana Silva';
+
+#####################################################################################################################################################################################
+
+delimiter $$
+create procedure sp_novo_emprestimo (
+	in p_id_exemplar int,
+	in p_id_membro int
+)
+
+begin
+	insert into tbl_emprestimo (
+		id_emprestimo,
+		data_emprestimo,
+		data_devolucao,
+		data_devolucao_efetiva,
+		id_exemplar,
+		id_membro
+	)
+	
+	values ( 
+		1800,
+		curdate(),
+		curdate() + interval 14 day,
+		null,
+		p_id_exemplar,
+		p_id_membro
+
+);	
+end$$
+	
+delimiter ;
+
+#drop procedure sp_novo_emprestimo;
+call sp_novo_emprestimo(101, 101);
