@@ -1,7 +1,7 @@
 CREATE DATABASE db_saber_e_cia_b;
 
 
-drop database db_saber_e_cia_b;
+#drop database db_saber_e_cia_b;
 
 USE db_saber_e_cia_b;
 
@@ -267,4 +267,55 @@ from tbl_livro
 where ano_publicacao < any (
 	select ano_publicacao from tbl_livro
     where editora = 'Aleph'
+);
+
+
+###################################################################################################################################################################################
+
+INSERT INTO tbl_exemplar (id_exemplar, status_exemplar, isbn)
+VALUES (101, 'Disponível', '978-85-325-1997-9'),
+(102, 'Emprestado', '978-85-7126-061-0'),
+(103, 'Disponível', '978-85-325-3078-3');
+
+select * from tbl_exemplar;
+
+####################################################################################################################################################################################
+
+INSERT INTO tbl_emprestimo (id_emprestimo, data_emprestimo, data_devolucao, data_devolucao_efetiva, id_exemplar, id_membro)
+VALUES (501, '2024-10-01', '2024-10-15', NULL, 102, 101);
+
+select * from tbl_emprestimo;
+
+####################################################################################################################################################################################
+
+select isbn, count(*) as numeros_de_copias from tbl_exemplar
+group by isbn;
+
+####################################################################################################################################################################################
+
+select M.nome_membro, L.titulo_livro, E.data_devolucao
+from tbl_membro M
+inner join tbl_emprestimo E on
+	M.id_membro = E.id_membro
+    
+inner join tbl_exemplar EX on
+	E.id_exemplar = EX.id_exemplar
+    
+inner join tbl_livro L on
+	EX.isbn = L.isbn;
+    
+#####################################################################################################################################################################################
+
+select A.nome_autor, count(AL.isbn) as quantidade
+from tbl_autor A
+left join tbl_autor_livro AL on
+	A.id_autor = AL.id_autor
+    group by A.nome_autor;
+    
+#####################################################################################################################################################################################
+
+select nome_membro from tbl_membro
+where id_membro in (
+	select id_membro from tbl_emprestimo
+    where data_devolucao_efetiva is null
 );
