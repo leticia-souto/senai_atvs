@@ -404,3 +404,28 @@ delimiter ;
 
 #drop procedure sp_novo_emprestimo;
 call sp_novo_emprestimo(101, 101);
+
+
+#####################################################################################################################################################################################
+
+delimiter $$
+create function fn_status_membro (p_id_membro int)
+returns varchar(20)
+deterministic
+begin
+	declare v_atrasos int;
+    
+    select count(*) into v_atrasos
+    from tbl_emprestimo
+    where id_membro = p_id_membro
+		and data_devolucao < curdate()
+        and data_devolucao_efetiva is null;
+        
+	if v_atrasos > 0 then
+		return 'com atraso';
+	else
+		return 'regular';
+    end if;
+end$$
+
+delimiter ;
