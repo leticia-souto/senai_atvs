@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/atv_acessibilidade/src/style/style.css">
+    <title>TechFood - Cardápio Digital</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="logo">TechFood</h1>
+        <nav>
+            <ul>
+                <li class="search-icon">🔍</li> 
+                <li class="cart-icon">🛒</li>   
+            </ul>
+        </nav>
+    </header>
+
+    <main class="banner-hero">
+        <h1>Sabor & Saber</h1>
+        <p>A melhor gastronomia tecnológica da região.</p>
+    
+
+    <section class="menu-container">
+        <article class="abas-lista">
+            <input type="radio" name="categoria" id="massa" checked>
+            <label for="massa">Massas</label>
+
+            <input type="radio" name="categoria" id="bebida" checked>
+            <label for="bebida">Bebidas</label>
+
+            <input type="radio" name="categoria" id="doce" checked>
+            <label for="doce">Doces</label>
+        </article>
+
+        <section class="aba-tela" id="tela-massas">
+            <article class="grid-produtos">
+                <div class="card-lasanha">
+                    <img src="src/images/fotoLasanha.jpg">
+                    <h3>Lasanha Tradicional</h3>
+                    <p>Massa artesanal ao molho bolonhesa com 4 queijos.</p>
+                    <span class="preco">R$ 45,90</span>
+                    <button class="btn-pedir" onclick="alert('Adicionado')">Pedir</button>
+                </div>
+
+                <article class="card-ravioli">
+                    <img src="src/images/fotoRavioli.jpg">
+                    <h3>Ravioli de Espinafre</h3>
+                    <p>Recheado com ricota fresca e nozes picadas.</p>
+                    <span class="preco">R$ 39,00</span>
+
+                    <button class="btn-pedir" aria-label="realizar o pedido">Pedir</button>
+                </article>
+
+                
+            </article>
+        </section>
+    
+    
+    <footer class="rodape">
+        <p>Siga-nos: <a href="#">FB</a> <a href="#">IG</a></p>
+    </div>
+
+    </main>
+
+
+</body>
+</html>
