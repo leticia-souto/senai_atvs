@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo techFood - grid + media Query</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+</head>
+<body>
+    
+    <header id="topo-loja">
+        <h1>TechFood - Sabor e Saber</h1>
+        
+        <input type="checkbox" id="bt_menu"/>
+        <label for="bt_menu" id="label_menu">&#9776;</label> <!-- label = texto que acompanha a caixinha -->
+        
+        <nav id="menu">
+            <ul>
+                <li><a href="#secao-massas">Massas</a></li>
+                <li><a href="#secao-sobremesas">Sobremesas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="secao-massas">
+            <h2 class="titulo-secao"> Nossas Massas</h2>
+            <div class="vitrine-grid">
+                <article class="card">
+                    <img src="src/fotoLasanha2.jpg" alt="Lasanha a bolonhesa">
+                    <h3>Lasanha a Bolonhesa</h3>
+                    <p class="desc">Massa artesanal e molho especial, feito com o gostinho de comida caseira da vó Moniquinha.</p>
+                    <span class="preco">R$ 45,00</span>
+                    
+                    <button class="bt_pedido">Pedir Agora</button>
+                </article>
+
+
+                <article class="card">
+                    <img src="" alt="nhoque de pesto">
+                    <h3>Nhoque de Pesto</h3>
+                    <p class="desc">Nhoque de pesto preparado pela melhor chef do Estado Moniquinha.</p>
+                    <span class="preco">R$ 25,00</span>
+                    
+                    <button class="bt_pedido">Pedir Agora</button>
+                </article>
+
+
+                <article class="card">
+                    <img src="" alt="Fettucine ao molho rose">
+                    <h3>Fettucine ao molho rosé</h3>
+                    <p class="desc"> Fettucine preparado com muito amor e temperos caseiros pela chef master Moniquinha Cotrinho.</p>
+                    <span class="preco">R$ 35,00</span>
+                    
+                    <button class="bt_pedido">Pedir Agora</button>
+                </article>
+            </div>
+        </section>
+
+
+
+        <section id="secao-sobremesas">
+            <h2 class="titulo-secao"> Nossas Sobremesas</h2>
+            <div class="vitrine-grid">
+
+                <article class="card">
+                    <img src="" alt="pudim de leite condensado">
+                    <h3>Pudim de Leite Condensado</h3>
+                    <p class="desc">A sobremesa mais clássica da nossa loja, feito com uma calda de caramelo especial.</p>
+                    <span class="preco">R$ 20,00</span>
+                    
+                    <button class="bt_pedido">Pedir Agora</button>
+                </article>
+
+
+                <article class="card">
+                    <img src="" alt="Torta de Limão com suspiro">
+                    <h3>Torta de Limão com suspiro</h3>
+                    <p class="desc">A veradeira receita de Torta de Limão você só encontra aqui no nosso restaurante, finalizado com um suspiro caseiro da nossa Soul chef Paulete.</p>
+                    <span class="preco">R$ 30,00</span>
+                    
+                    <button class="bt_pedido">Pedir Agora</button>
+                </article>
+
+
+                <article class="card">
+                    <img src="" alt="palha italiana">
+                    <h3>Palha Italiana</h3>
+                    <p class="desc"> A melhor palha italiana nacional só é possível encontrar no nosso restaurnte, que é feito especialmente pela nossa confeiteira chef Heloísinha Paixones.</p>
+                    <span class="preco">R$ 18,00</span>
+                    
+                    <button class="bt_pedido">Pedir Agora</button>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer id="rodape">
+        <div class="info-footer">
+            <p><strong>TechFood 2026 &#169;</strong></p>
+            <p>Rua das Moniquesters 147, Jd. das Esfomeadinhas - Monicolândia</p>
+        </div>
+    </footer>
+
+</body>
+</html>
