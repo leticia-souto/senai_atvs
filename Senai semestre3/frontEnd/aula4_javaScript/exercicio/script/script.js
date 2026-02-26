@@ -50,3 +50,17 @@
 //     alert(`Infelizmente o número sorteado foi ${numeroSistema}.`)
 // }
 
+
+//Exercicio 5
+
+class Veiculo{
+    constructor(modelo, marca, ano){
+        this.modelo = modelo;
+        this.marca = marca;
+        this.ano = ano
+    }
+
+    idadeVeiculo(){
+        return date
+    }
+}
