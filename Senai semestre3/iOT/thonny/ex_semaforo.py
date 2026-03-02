@@ -9,6 +9,15 @@ ledVermelho.value(0)
 ledAmarelo.value(0)
 ledVerde.value(0)
 
+#modelo Andrew
+# ordem = [(ledVerde, 3), (ledAmarelo, 1), (ledVermelho, 2)]
+# 
+# while True:
+#     for led, tempo in ordem:
+#         led.value(1)
+#         sleep(tempo)
+#         led.value(0)
+
 #while(True):
 while True:
     #Semáforo ABRIU
@@ -28,3 +37,4 @@ while True:
     ledAmarelo.value(0)
     ledVermelho.value(0)
     sleep(2)
+
