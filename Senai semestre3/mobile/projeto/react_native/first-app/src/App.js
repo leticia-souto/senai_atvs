@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Exemplo03 from './exemplo-03-condicionais';
+import Exemplo04 from './jsx_exemples/exemplo-04-listas';
+
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Exemplo03 />
-      <StatusBar style="auto" />
+      <Exemplo04/>
     </View>
   );
 }
