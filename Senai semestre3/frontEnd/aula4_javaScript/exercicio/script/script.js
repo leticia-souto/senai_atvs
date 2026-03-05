@@ -1,8 +1,8 @@
 //Exercicio 1
 
-// const usuario = prompt('Seja Bem-Vindo, cliente! Para um atendimento personalizado, digite seu nome:')
+// let usuario = prompt('Seja Bem-Vindo, cliente! Para um atendimento personalizado, digite seu nome:').trim()
 
-// const usuarioSobrenome = prompt(`${usuario}, agora digite seu sobrenome:`)
+// let usuarioSobrenome = prompt(`${usuario}, agora digite seu sobrenome:`)
 
 // let nomeFormatado = (usuario.concat(usuarioSobrenome)).toLowerCase()
 
