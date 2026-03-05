@@ -60,15 +60,41 @@ app.get('/filmes', async(req, res) => {
         }
     })
 
-app.get('/filmes/:id', (req,res) => {
-    const {id} = req.params
+// app.get('/filmes/:id', (req,res) => {
+//     const {id} = req.params
 
-    pool.query('SELECT * FROM filme WHERE id = ?', [id],(err, results) =>{
-        res.json(results)
-    })
+//     pool.query('SELECT * FROM filme WHERE id = ?', [id],(err, results) =>{
+//         res.json(results)
+//     })
 
+// })
+
+app.get('/filmes/:id', async(req, res) => {
+    try{
+        const{id} = req.params
+
+        if(!id || isNaN(id)){
+            return res.status(400).json({
+                sucesso: false,
+                mensagem: `Filme não encontrado`
+            })
+        }
+
+        res.json({
+            sucesso: true,
+            dados: filme[0]
+        })
+
+    } catch (erro){
+        console.error(`Erro ao encontrar os filmes ${erro}`)
+        res.status(500).json({
+            sucesso: false,
+            mensagem:'Erro ao encontrar filme',
+            erro: erro.mensagem
+        })
+
+    }
 })
-
 
 
 module.exports = app
