@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Lista03 from './jsx_exercicios/lista-03';
+
+import ViewExemple02 from './basic_components/view_exemples02';
 
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Lista03/>
+      <ViewExemple02/>
     </View>
   );
 }
