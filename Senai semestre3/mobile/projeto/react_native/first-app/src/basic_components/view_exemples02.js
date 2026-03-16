@@ -6,33 +6,33 @@ export default function ViewExemple02() {
       <Text style={styles.titulo}>Flex</Text>
 
       <View style={styles.exemplo}>
-        <View style={{flexDirection: "row", height: 60, width: "100%", gap: 8}}>
+        <View style={{ flexDirection: "row", height: 60, width: "100%", gap: 8 }}>
 
-            <View style={[styles.box, { flex: 1} ]}>
-                <Text style={styles.textBox}>1</Text>
-            </View>
+          <View style={[styles.box, { flex: 1 }]}>
+            <Text style={styles.textBox}>1</Text>
+          </View>
 
-            <View style={[styles.box, { flex: 2} ]}>
-                <Text style={styles.textBox}>2</Text>
-            </View>
+          <View style={[styles.box, { flex: 2 }]}>
+            <Text style={styles.textBox}>2</Text>
+          </View>
 
-            <View style={[styles.box, { flex: 1} ]}>
-                <Text style={styles.textBox}>3</Text>
-            </View>
+          <View style={[styles.box, { flex: 1 }]}>
+            <Text style={styles.textBox}>3</Text>
+          </View>
 
-            </View>
         </View>
+      </View>
 
 
-        <Text style={styles.titulo}>Flex</Text>
+      <Text style={styles.titulo}>Flex</Text>
 
       <View style={styles.exemplo}>
-        <View style={{flexDirection: "row", gap: 8, flexWrap: "wrap"}}>
+        <View style={{ flexDirection: "row", gap: 8, flexWrap: "wrap" }}>
 
-            <View style={[styles.box, {width: 80}]}></View>
-            
-            </View>
+          <View style={[styles.box, { width: 80 }]}></View>
+
         </View>
+      </View>
     </View>
   );
 }
