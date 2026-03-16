@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function ExercicioView08() {
     return <View style={styles.container}>
 
-        <Text>Layout de Duas Colunas</Text>
+        <Text>Sidebar com Área de Conteúdo</Text>
 
         <View style={{
             flexDirection: "row",

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 export default function ExercicioView10() {
     return <View style={styles.container}>
 
-        <Text>Header, Conteúdo e Footer</Text>
+        <Text>Mini Dashboard</Text>
     
         <View style={styles.container}>
 
