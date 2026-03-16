@@ -1,20 +1,22 @@
-from machine import Pin, PWM
+from machine import Pin, ADC, PWM
 from utime import sleep
 
-led = PWM(14)
-led.freq(1000)
+potenciometro = ADC(28)
+led_pwm = PWM(Pin(14))
+led_comum = Pin(15, Pin.OUT)
 
-leitura = 60000
-
-# porcentagem = leitura / 65536 * 100
-
-# print(f"O valor em porcentagem é de %{porcentagem:.2f} %")
+led_pwm.freq(1000)
 
 while True:
+    valor = potenciometro.read_u16()
+    porcentagem = int((valor * 100) / 65535)
+   
+    led_pwm.duty_u16(valor)
     
-    def converte_porcentagem (leitura):
-        porcentagem = leitura / 65535 * 100
-        
-        converte_porcentagem(leitura)
-        
-        
+    if porcentagem > 50:
+        led_comum.value(1)
+    else:
+        led_comum.value(0)
+   
+    print(f"{porcentagem}%")
+    sleep(0.5)
