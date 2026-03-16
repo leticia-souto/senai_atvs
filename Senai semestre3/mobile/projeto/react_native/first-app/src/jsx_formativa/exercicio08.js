@@ -16,16 +16,20 @@ export default function ExercicioView08() {
         }}>
 
             <View style={styles.sideBar}>
-                <Text style={styles.textStyle}>Coluna 1</Text>
+                <Text style={styles.textStyle}>SideBar</Text>
             </View>
 
             <View style={styles.column}>
-                <View style={styles.blueBox}>
-                    <Text style={styles.textStyle}>3</Text>
+                <View style={styles.card1}>
+                    <Text style={styles.textStyle}>card 1</Text>
                 </View>
 
-                <View style={styles.orangeBox}>
-                    <Text style={styles.textStyle}>4</Text>
+                <View style={styles.card2}>
+                    <Text style={styles.textStyle}>card 2</Text>
+                </View>
+
+                <View style={styles.card3}>
+                    <Text style={styles.textStyle}>card 3</Text>
                 </View>
 
             </View>
@@ -41,7 +45,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         flex: 1,
         gap: 18,
-        padding: 10,
 
     },
     textStyle: {
@@ -49,32 +52,31 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     sideBar: {
-        flex: 1,
         width:80,
         backgroundColor: "grey",
         alignItems: "center",
         justifyContent: "center",
     },
-    orangeBox: {
-        flex: 1,
-        backgroundColor: "orange",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    greenBox: {
+    card1: {
         flex: 1,
         backgroundColor: "green",
         alignItems: "center",
         justifyContent: "center",
     },
-    blueBox: {
+    card2: {
+        flex: 1,
+        backgroundColor: "orange",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    card3: {
         flex: 1,
         backgroundColor: "blue",
         alignItems: "center",
         justifyContent: "center",
     },
     column: {
-        flexDirection: "row",
+        flexDirection: "column",
         flex: 1,
         gap: 8,
         
