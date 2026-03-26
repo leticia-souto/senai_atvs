@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     textStyle: {
         color: "black",
         fontWeight: "bold",
+        
 
     },
 
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     },
     rowTop: {
         flexDirection: "row",
-        height: 40,
+        height: 110,
         gap: 8,
     },
 

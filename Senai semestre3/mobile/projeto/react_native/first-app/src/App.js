@@ -2,12 +2,10 @@
 import { StyleSheet, View } from 'react-native';
 
 
-import ExercicioView06 from './jsx_formativa/exercicio06';
-import ViewExemple02 from './basic_components/view_exemples02';
-import ExercicioView07 from './jsx_formativa/exercicio07';
-import ExercicioView08 from './jsx_formativa/exercicio08';
 import ExercicioView10 from './jsx_formativa/exercicio10';
-import ExercicioView09 from './jsx_formativa/exercicio09';
+import Lista02 from './jsx_exercicios/lista-02';
+import Exemplo03 from './jsx_exemples/exemplo-03-condicionais';
+
 
 
 

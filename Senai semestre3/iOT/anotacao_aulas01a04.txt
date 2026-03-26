@@ -1,0 +1,128 @@
+AULA 0
+- microcontrolador -> tudo integrado, memória ram, processador e memória de armazenamento (ROM), CPU...
+- Microprocessador -> componentes separados, trabalha apenas com a parte de processamento (CPU), RAM e ROM são externos.
+- Raspberry Pi Pico é um microcontrolador.
+- unidade de processamento -> cérebro (parte preta com com a logo da rasp)
+- Possível compartilhar dados por rede (o código)
+- Quando não tem USB -> bateria, tomada (alimentação/fonte externa)
+- Conectividade é o I de iOT -> sem ela é apenas um dispositivo eletrônico isolado.
+- Principais conexões: wi-fi, bluetooth e LoRaWAN
+- microcontroladores consomem pouquíssima energia
+
+AULA 01 - MicroPython
+- Usamos a versão 3 do Python
+- placas que roda: ESP32
+- ESP8266
+- Raspberry Pi Pico
+- Vantagem - python é uma linguagem mais simples.
+- BIBLIOTECAS:
+  - utime (ou time)
+  - machine
+  - preciso fazer isso por primeiro.
+  - CÓDIGO:
+  from machine import PIN, ADC, PWM
+  from utime import sleep
+
+BIBLIOTECA MACHINE
+- Portas: 
+- GPIO : portas digitais configuráveis
+- Portas analógicas específicas (ADC): 26,27 e 28.
+- Sensor: leitura de variáveis do ambiente (temperatura, umidade, presença, distância)
+- Atuador: ação
+
+PORTAS ADC:
+- permite ler sinais analógicos e converter esses valores em dados digitais (0 a 65535)
+- Código:
+sensor = ADC(26)
+
+
+PWM:
+- qualquer porta pode ser PWM
+- simula uma saída analógica usando uma digital que oscila rapidamente.
+- Código:
+*importação
+led = PWM(Pin(15)) # define led e sua respectiva porta, porém o pino sendo PWM
+le.freq(1000) #define a frequência que será manipulada
+led.dut_u16(32768) #50% do brilho
+
+
+
+BIBLIOTECA UTIME
+
+SLEEP:
+- usamos para pausar o programa por um tempo determinado
+- necessário esperar um tempo entre uma leitura e outra.
+- código:
+print('Aguardando 2 segundos...') # mensagem antes da pausa
+sleep(2)
+print('Pronto!') # mensagem após a pausa
+
+SLEEP - MS E US
+- para microssegundo e milissegundo.
+- Código:
+sleep_ms(500) #pausa por 500 microssegundos.
+sleep_us(200) #pausa por 200 milissegundos 
+
+
+
+AULA 03 SENSORES E ATUADORES
+- atuadores: executam uma ação física em resposta a um comando.
+- transformar um sinal elétrico em outra energia
+- Atuadores: led e led rgb
+
+LED
+- resistor utilizado: 230ohms -> vermelho, laranja, marrom, dourado.
+- Porta maior é o anodo (+)
+- Porta menor é o catodo (-)
+
+LED RGB
+- existe o catodo comum e anodo comum -> o que muda é a inversão da lógica.
+- O que utilizamos: catodo comum
+- perna MAIOR : negativo
+- perna a esquerda é o VERMELHO
+- segue a ordem R(RED), G(GREEN), B(BLUE)
+
+SENSORES
+- captam informações do ambiente físico e transformam em sinais elétricos que podem ser lidos por um microcontrolador.
+- sistema detecta e interpreta 
+
+
+PUSHBOTTON
+***resistor de 330ohms -> laranja, laranja, marrom, dourado
+- resistor utilizado: marrom, preto, laranja, dourado  -> 10kohms
+- PULL-UP: lógica inversa -> quando apertar o botão fica 0 e quando está sem apertar fica 1. (BOTÃO NÃO PRESSIONADO).
+- PULL- DOWN: quando aperta o botão fica 1 e quando solta fica 0. (BOTÃO PRESSIONADO.)
+
+PULL-UP:
+- EM CIMA -> PORTA DIGITAL E 3V3. (respectivamente)
+- Portas de BAIXO -> GND (de preferencia do lado oposto do 3V3)
+
+PULL-DOWN:
+- EM CIMA: PORTA DIGITAL E GND (respectivamente)
+- EM BAIXO -> 3V3 (de preferencia do lado oposto do GND)
+
+POTENCIÔMETRO
+- DA ESQUERDA PARA DIREITA: GND, ADC E 3V3 -> pode inverter (mas o meio é sempre dados ADC)
+
+RESISTORES
+- LEITURA resistores de 4 faixas:
+- primeira e segunda faixa -> valores concatenar -> ex: 1+1 = 11
+- terceira faixa: por quem vai multiplicar
+- quarta -> MAIS OU MENOS porcentagem de tolerância (para cima e para baixo) -> led 230ohms -> tolerância: 241,5ohms e 218,5ohms 
+-* se for de 5 faixas -> aumenta um valor no concatenar.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
