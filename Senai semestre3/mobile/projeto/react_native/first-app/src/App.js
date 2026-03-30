@@ -2,9 +2,9 @@
 import { StyleSheet, View } from 'react-native';
 
 
-import ExercicioView10 from './jsx_formativa/exercicio10';
-import Lista02 from './jsx_exercicios/lista-02';
-import Exemplo03 from './jsx_exemples/exemplo-03-condicionais';
+import Exercicio01Somativa from './leticiaSouto_somativa/exercicio1';
+import Exercicio2Somativa from './leticiaSouto_somativa/exercicio2';
+import Exercicio02Somativa from './leticiaSouto_somativa/exercicio2';
 
 
 
@@ -12,7 +12,7 @@ import Exemplo03 from './jsx_exemples/exemplo-03-condicionais';
 export default function App() {
   return (
     <View style={styles.container}>
-      <ExercicioView10/>
+      <Exercicio02Somativa/>
     </View>
   );
 }
