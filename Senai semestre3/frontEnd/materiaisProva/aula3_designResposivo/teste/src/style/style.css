@@ -1,0 +1,15 @@
+*{
+    margin: 0px; /**/
+    box-sizing: border-box; /*mantém espaços pré definidos*/
+    padding: 0px; /*espaçamento, por padrão vem 0*/
+}
+
+body{
+    background-color: pink;
+}
+
+@media (max-width:600px) {
+    body{
+        background-color:plum;
+    }
+} /*adapta determinado tamnho de tela*/
