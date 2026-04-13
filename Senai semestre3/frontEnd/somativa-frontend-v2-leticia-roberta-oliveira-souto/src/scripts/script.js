@@ -30,10 +30,15 @@ const foco = document.querySelector("#banner-foco")
 
 
 if(foco){
-    foco.addEventListener("mouseouver", () => {
-        foco.classList.add(foco-total)
+    foco.addEventListener("mouseover", function () {
+        foco.classList.add("foco-total")
     })
+}
 
+if(foco){
+    foco.addEventListener("mouseout", function (){
+        foco.classList.remove("foco-total")
+    })
 }
 
 
@@ -51,7 +56,7 @@ const inputPeso = document.querySelector("#peso-aluno");
 const metaAgua = document.querySelector("#meta-agua")
 
 if(inputPeso && metaAgua){
-    inputPeso.addEventListener("input", () => {
+    inputPeso.addEventListener("input", function() {
         const metaTotal = Number(inputPeso.value) * 35;
         metaAgua.textContent = metaTotal;
         
@@ -72,9 +77,11 @@ const nomeRefeicao = document.querySelector("#nome-refeicao");
 const listaRefeicoes = document.querySelector("#lista-refeicoes");
 
 if(btnRegistrar) {
-    btnRegistrar.addEventListener("click", () =>{
-        btnRegistrar.classList.add(btn-primario)
-        classList.innerHTML()
+    btnRegistrar.addEventListener("click", function (){
+        listaRefeicoes.innerHTML +=
+        '<article class="card-refeicao"><h3>🥗 Prato: ' +
+        nomeRefeicao.value +
+        "</h3></article>";
     })
 }
 
@@ -89,8 +96,8 @@ dispare um window.alert("Diário reiniciado com sucesso para amanhã!") na tela 
 const btnZerar = document.querySelector("#btn-zerar");
 
 if(btnZerar) {
-    btnZerar.addEventListener("click", () =>{
-        listaRefeicoes = 0
+    btnZerar.addEventListener("click", function (){
+        listaRefeicoes.innerHTML = ""
         window.alert("Diário reiniciado com sucesso para amanhã!") 
     })
 }

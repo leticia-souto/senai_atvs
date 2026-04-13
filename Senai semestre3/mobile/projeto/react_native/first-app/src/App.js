@@ -1,26 +1,26 @@
 
 import { StyleSheet, View } from 'react-native';
 
-
-import Exercicio01Somativa from './leticiaSouto_somativa/exercicio1';
-import Exercicio2Somativa from './leticiaSouto_somativa/exercicio2';
-import Exercicio02Somativa from './leticiaSouto_somativa/exercicio2';
-
-
+import Botao from './props_exercicios/desafio';
 
 
 export default function App() {
+
   return (
+
     <View style={styles.container}>
-      <Exercicio02Somativa/>
+      <Botao titulo="Entrar" />
+      <Botao titulo="Sair" />
+      <Botao titulo="Cadastrar" />
     </View>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: "center",
   },
 });

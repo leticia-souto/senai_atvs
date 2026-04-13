@@ -108,13 +108,13 @@ A transformação de escala eu já fiz! */
 
 
 .foco-total {
-    
-    
+    background-color: #00cec9;
+    color: #ffffff;
     transform: scale(1.03);
 }
 .foco-total h2 {
-    color: #00cec9;
-    border-color: #ffffff;
+    color: white;
+    border-color: white;
 }
 
 
