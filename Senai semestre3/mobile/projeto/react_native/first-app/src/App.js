@@ -1,17 +1,17 @@
 
 import { StyleSheet, View } from 'react-native';
+import ContadorExemple from './hooks/useState_exemples';
+import TelaDeLogin from './hooks/useRef_exemple';
+import TelaMoedas from './hooks/useEffect_exemple';
+import Recados from './hooks/leticiaSouto_exercicioHooks';
 
-import Botao from './props_exercicios/desafio';
 
 
 export default function App() {
 
   return (
-
     <View style={styles.container}>
-      <Botao titulo="Entrar" />
-      <Botao titulo="Sair" />
-      <Botao titulo="Cadastrar" />
+      <Recados/>
     </View>
 
   );
