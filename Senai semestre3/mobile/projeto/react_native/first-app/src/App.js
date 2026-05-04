@@ -1,9 +1,9 @@
 
 import { StyleSheet, View } from 'react-native';
-import ContadorExemple from './hooks/useState_exemples';
-import TelaDeLogin from './hooks/useRef_exemple';
-import TelaMoedas from './hooks/useEffect_exemple';
-import Recados from './hooks/leticiaSouto_exercicioHooks';
+import FormularioExemplo from './text_input/formulario';
+import FlatListExemplo from './flatList/flatList_exemple';
+import ListaDeComprar from './flatList/exercicioAula';
+import ListaDeCompras from './flatList/exercicioAula';
 
 
 
@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Recados/>
+      <ListaDeCompras/>
     </View>
 
   );
@@ -24,3 +24,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+
