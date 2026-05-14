@@ -7,13 +7,13 @@ class PedidoRepository {
     }
 
     async findById(id) {
-        // Busca o pedido
+        
         const [pedidoRows] = await pool.query('SELECT * FROM pedido WHERE id = ?', [id]);
         if (pedidoRows.length === 0) return null;
 
         const pedido = pedidoRows[0];
 
-        // Busca os itens do pedido com as informações do produto
+        
         const [itensRows] = await pool.query(`
             SELECT ip.*, p.nome as produto_nome, p.descricao as produto_descricao 
             FROM item_pedido ip
