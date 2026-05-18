@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ECOVIBE - Painel Inteligente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#0d0e10",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "secondary-fixed-dim": "#b6c4ff",
+                      "primary-container": "#1a2b45",
+                      "secondary-fixed": "#dce1ff",
+                      "error": "#ffb4ab",
+                      "on-secondary-container": "#9db2ff",
+                      "inverse-surface": "#e4e2e4",
+                      "on-primary": "#20314b",
+                      "on-surface-variant": "#c5c6ce",
+                      "on-secondary-fixed-variant": "#264191",
+                      "primary-fixed": "#d6e3ff",
+                      "surface": "#131315",
+                      "on-primary-fixed": "#091c35",
+                      "tertiary-container": "#292b2b",
+                      "on-surface": "#e4e2e4",
+                      "inverse-on-surface": "#303032",
+                      "error-container": "#93000a",
+                      "surface-bright": "#39393b",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "surface-container-lowest": "#0d0e10",
+                      "surface-container-high": "#292a2c",
+                      "on-primary-fixed-variant": "#374763",
+                      "secondary-container": "#264191",
+                      "surface-tint": "#b6c7e8",
+                      "inverse-primary": "#4e5f7c",
+                      "on-secondary": "#05297a",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed-dim": "#b6c7e8",
+                      "on-primary-container": "#8293b2",
+                      "primary": "#b6c7e8",
+                      "outline": "#8e9098",
+                      "surface-variant": "#343537",
+                      "surface-container-low": "#1b1b1e",
+                      "on-tertiary": "#2f3131",
+                      "on-secondary-fixed": "#00164e",
+                      "tertiary": "#c6c6c7",
+                      "on-tertiary-container": "#919292",
+                      "on-error": "#690005",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-background": "#e4e2e4",
+                      "secondary": "#b6c4ff",
+                      "outline-variant": "#44474d",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "surface-container": "#1f1f22",
+                      "surface-container-highest": "#343537",
+                      "surface-dim": "#131315"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-padding-mobile": "20px",
+                      "gutter": "24px",
+                      "unit": "8px",
+                      "container-padding-desktop": "40px",
+                      "section-gap": "64px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "label-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            background: radial-gradient(circle at 0% 0%, rgba(26, 43, 69, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 100% 100%, rgba(38, 65, 145, 0.1) 0%, transparent 40%),
+                        #0d0e10;
+            color: #e4e2e4;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+        .widget-card {
+            background: linear-gradient(180deg, rgba(31, 31, 34, 0.8) 0%, rgba(21, 21, 23, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .widget-card:hover {
+            border-color: rgba(182, 199, 232, 0.3);
+            transform: translateY(-2px);
+        }
+        #sensor-sidebar {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #sensor-sidebar.translate-x-full {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col overflow-x-hidden" data-mode="connect">
+<!-- Top AppBar Component -->
+<header class="w-full top-0 bg-surface/80 backdrop-blur-md border-b border-white/5 flex justify-between items-center px-container-padding-desktop py-5 z-50">
+<div class="font-display-lg text-headline-md tracking-tighter text-on-surface">ECOVIBE</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 hover:bg-surface-variant transition-colors p-2 rounded-full" data-icon="analytics" onclick="toggleSidebar()">analytics</button>
+<div class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 hover:bg-surface-variant transition-colors p-2 rounded-full" data-icon="settings">settings</div>
+<div class="material-symbols-outlined text-primary cursor-pointer active:opacity-80 hover:bg-surface-variant transition-colors p-2 rounded-full" data-icon="account_circle">account_circle</div>
+</div>
+</header>
+<!-- Right Sidebar (Drawer) -->
+<aside class="fixed right-0 top-0 h-full w-[400px] bg-surface-container-high/95 backdrop-blur-2xl border-l border-white/10 z-[60] shadow-2xl flex flex-col translate-x-full" id="sensor-sidebar">
+<div class="p-8 border-b border-white/5 flex justify-between items-center">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-fixed-dim text-2xl">analytics</span>
+<h3 class="font-label-md text-label-md text-white uppercase tracking-widest">Diagnóstico de Sensores</h3>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-white transition-colors" onclick="toggleSidebar()">close</button>
+</div>
+<div class="flex-grow overflow-y-auto">
+<div class="flex items-center justify-between py-6 px-8 border-b border-white/5 hover:bg-white/5 transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary/60 text-2xl" data-icon="window">window</span>
+<div class="flex flex-col">
+<span class="font-label-md text-base text-on-surface">Janelas</span>
+<span class="text-xs text-primary uppercase font-bold tracking-tighter">Operacional</span>
+</div>
+</div>
+<button class="px-5 py-2 rounded-full border border-primary/30 text-xs font-bold text-primary hover:bg-primary/10 transition-colors uppercase">Testar</button>
+</div>
+<div class="flex items-center justify-between py-6 px-8 border-b border-white/5 hover:bg-white/5 transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary/60 text-2xl" data-icon="door_front">door_front</span>
+<div class="flex flex-col">
+<span class="font-label-md text-base text-on-surface">Portas</span>
+<span class="text-xs text-primary uppercase font-bold tracking-tighter">Operacional</span>
+</div>
+</div>
+<button class="px-5 py-2 rounded-full border border-primary/30 text-xs font-bold text-primary hover:bg-primary/10 transition-colors uppercase">Testar</button>
+</div>
+<div class="flex items-center justify-between py-6 px-8 border-b border-white/5 hover:bg-white/5 transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/60 text-2xl" data-icon="humidity_mid">humidity_mid</span>
+<div class="flex flex-col">
+<span class="font-label-md text-base text-on-surface">Umidade Interna</span>
+<span class="text-xs text-secondary uppercase font-bold tracking-tighter">Calibrado</span>
+</div>
+</div>
+<button class="px-5 py-2 rounded-full border border-secondary/30 text-xs font-bold text-secondary hover:bg-secondary/10 transition-colors uppercase">Testar</button>
+</div>
+<div class="flex items-center justify-between py-6 px-8 border-b border-white/5 hover:bg-white/5 transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/60 text-2xl">humidity_low</span>
+<div class="flex flex-col">
+<span class="font-label-md text-base text-on-surface">Umidade Externa</span>
+<span class="text-xs text-secondary uppercase font-bold tracking-tighter">Calibrado</span>
+</div>
+</div>
+<button class="px-5 py-2 rounded-full border border-secondary/30 text-xs font-bold text-secondary hover:bg-secondary/10 transition-colors uppercase">Testar</button>
+</div>
+<div class="flex items-center justify-between py-6 px-8 border-b border-white/5 hover:bg-white/5 transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/60 text-2xl" data-icon="thermostat">thermostat</span>
+<div class="flex flex-col">
+<span class="font-label-md text-base text-on-surface">Temperatura Interna</span>
+<span class="text-xs text-secondary uppercase font-bold tracking-tighter">Calibrado</span>
+</div>
+</div>
+<button class="px-5 py-2 rounded-full border border-secondary/30 text-xs font-bold text-secondary hover:bg-secondary/10 transition-colors uppercase">Testar</button>
+</div>
+<div class="flex items-center justify-between py-6 px-8 border-b border-white/5 hover:bg-white/5 transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/60 text-2xl" data-icon="device_thermostat">device_thermostat</span>
+<div class="flex flex-col">
+<span class="font-label-md text-base text-on-surface">Temperatura Externa</span>
+<span class="text-xs text-secondary uppercase font-bold tracking-tighter">Calibrado</span>
+</div>
+</div>
+<button class="px-5 py-2 rounded-full border border-secondary/30 text-xs font-bold text-secondary hover:bg-secondary/10 transition-colors uppercase">Testar</button>
+</div>
+<div class="flex items-center justify-between py-6 px-8 border-b border-white/5 hover:bg-white/5 transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary/60 text-2xl" data-icon="light_mode">light_mode</span>
+<div class="flex flex-col">
+<span class="font-label-md text-base text-on-surface">Luminosidade Externa</span>
+<span class="text-[10px] text-on-surface-variant/60 lowercase italic">Verificando incidência de luz para cortinas</span>
+<span class="text-xs text-primary uppercase font-bold tracking-tighter mt-1">Operacional</span>
+</div>
+</div>
+<button class="px-5 py-2 rounded-full border border-primary/30 text-xs font-bold text-primary hover:bg-primary/10 transition-colors uppercase">Testar</button>
+</div>
+<div class="p-8 border-t border-b border-white/5 bg-white/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error/60 text-xl">security</span>
+<h4 class="font-label-md text-label-md text-white uppercase tracking-widest">Atuadores de Segurança</h4>
+</div>
+</div>
+<div class="flex items-center justify-between py-6 px-8 border-b border-white/5 hover:bg-white/5 transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant/60 text-2xl">volume_up</span>
+<div class="flex flex-col">
+<span class="font-label-md text-base text-on-surface">Buzzer</span>
+<span class="text-xs text-on-surface-variant uppercase font-bold tracking-tighter">OFF</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between py-6 px-8 border-b border-white/5 hover:bg-white/5 transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary/60 text-2xl">emergency</span>
+<div class="flex flex-col">
+<span class="font-label-md text-base text-on-surface">LED de Status</span>
+<span class="text-xs text-primary uppercase font-bold tracking-tighter">VERDE (Seguro)</span>
+</div>
+</div>
+</div>
+<div class="p-6 px-8 bg-error/5">
+<p class="text-[11px] text-error/70 italic leading-relaxed"><span class="font-bold">Lógica:</span> Acionados em caso de falha nas janelas sob chuva.</p>
+</div>
+</div>
+<div class="p-8 bg-surface-container-lowest">
+<p class="uppercase tracking-widest text-center text-on-surface text-xs font-medium">Última varredura completa: Há 12 minutos</p>
+</div>
+</aside>
+<!-- Overlay for Sidebar -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] transition-opacity duration-300 opacity-0 hidden" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-container-padding-desktop py-gutter max-w-7xl mx-auto w-full grid grid-cols-12 gap-gutter">
+<!-- Left Column: Clock & Climate Cards -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-10">
+<!-- Clock Section -->
+<div class="flex flex-col py-6">
+<div class="text-on-surface-variant font-label-md text-label-md mb-2 uppercase tracking-[0.2em] opacity-70">Olá, Residente</div>
+<h1 class="font-display-lg text-[84px] text-white leading-none tracking-tight">10:20 AM</h1>
+<p class="font-headline-md text-headline-md text-primary tracking-[0.15em] mt-3 uppercase">Quinta, 05 Abr</p>
+</div>
+<!-- Climate Info Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Indoor Widget -->
+<div class="widget-card p-8 rounded-3xl flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-60">Ambiente Interno</span>
+</div>
+<div class="mt-4">
+<div class="text-[48px] font-medium text-white leading-none">24°C</div>
+<div class="flex items-center gap-2 mt-4 text-on-surface-variant flex-wrap">
+<span class="material-symbols-outlined text-xl" data-icon="humidity_mid">humidity_mid</span>
+<span class="font-body-md">40% Umidade</span>
+<div class="flex items-center gap-2 ml-auto text-on-surface-variant"><span class="material-symbols-outlined text-xl" data-icon="air">air</span><span class="font-body-md">92 AQI</span></div>
+</div>
+</div>
+</div>
+<!-- Outdoor Widget -->
+<div class="widget-card p-8 rounded-3xl flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="wb_cloudy">wb_cloudy</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest opacity-60">Ambiente Externo</span>
+</div>
+<div class="mt-4">
+<div class="flex items-end justify-center gap-6">
+<div class="text-[48px] font-medium text-white leading-none">18°C</div>
+<div class="flex items-center gap-2 text-secondary mb-1">
+<span class="material-symbols-outlined text-2xl">partly_cloudy_day</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide">Parcialmente Nublado</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4 text-on-surface-variant flex-wrap justify-center gap-6">
+<span class="material-symbols-outlined text-xl" data-icon="humidity_high">humidity_high</span>
+<span class="font-body-md">45% Umidade</span>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-xl" data-icon="air_purifier">air_purifier</span>
+<span class="font-body-md">Qualidade: Excelente</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Device Status List -->
+<div class="col-span-12 lg:col-span-5 flex flex-col justify-center">
+<div class="flex flex-col bg-surface-container-low/40 rounded-[32px] overflow-hidden border border-white/5 backdrop-blur-sm">
+<div class="px-8 py-6 border-b border-white/5 bg-white/5">
+<h3 class="font-label-md text-label-md text-white uppercase tracking-widest">Controle de Dispositivos</h3>
+</div>
+<!-- Windows -->
+<div class="flex items-center justify-between py-5 px-8 border-b border-white/5 hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="window">window</span>
+</div>
+<span class="font-body-md text-body-md">Janelas</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl text-secondary" data-icon="rainy">sensor_window</span>
+<span class="font-label-md text-label-md font-bold text-secondary">ABERTAS</span>
+</div>
+</div>
+<!-- Ventilation -->
+<div class="flex items-center justify-between py-5 px-8 border-b border-white/5 hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="air">air</span>
+</div>
+<span class="font-body-md text-body-md">Ventilação Interna</span>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold">ATIVA</span>
+</div>
+<!-- Air Conditioning -->
+<div class="flex items-center justify-between py-5 px-8 border-b border-white/5 hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center group-hover:bg-on-surface-variant/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="ac_unit">ac_unit</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Ar Condicionado</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">DESLIGADO</span>
+</div>
+<!-- Curtains -->
+<div class="flex items-center justify-between py-5 px-8 border-b border-white/5 hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center group-hover:bg-secondary/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary">curtains</span>
+</div>
+<span class="font-body-md text-body-md">Cortinas</span>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold uppercase">Abertas</span>
+</div>
+<!-- Doors -->
+<div class="flex items-center justify-between py-5 px-8 hover:bg-white/5 transition-all group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="door_front">door_front</span>
+</div>
+<span class="font-body-md text-body-md">Portas de Acesso</span>
+</div>
+<div class="flex items-center gap-2 bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="lock" data-weight="fill">lock</span>
+<span class="font-label-sm text-[10px] text-white font-bold uppercase tracking-tighter">Seguro</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Vertical Stacked Tips Section -->
+<div class="col-span-12 mt-8 flex flex-col gap-gutter">
+<!-- Dicas para Hoje -->
+<div class="widget-card p-8 rounded-[32px] border border-primary/10 shadow-lg">
+<div class="flex items-center gap-4 mb-8 text-primary border-b border-white/5 pb-4">
+<span class="material-symbols-outlined text-3xl">health_and_safety</span>
+<h4 class="font-label-md text-label-md uppercase tracking-[0.2em] font-bold">Dicas para Hoje</h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex items-start gap-4">
+<div class="p-3 bg-primary/10 rounded-xl">
+<span class="material-symbols-outlined text-primary/80">water_drop</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-white uppercase tracking-wider text-[10px]">Hidratação</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Lembre-se de beber água regularmente para manter a hidratação ideal.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-3 bg-secondary/10 rounded-xl">
+<span class="material-symbols-outlined text-secondary/80">wb_sunny</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-white uppercase tracking-wider text-[10px]">Proteção UV</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Índice UV moderado. Use proteção solar mesmo com céu nublado hoje.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-3 bg-on-primary-container/10 rounded-xl">
+<span class="material-symbols-outlined text-on-primary-container/80">air</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-white uppercase tracking-wider text-[10px]">Ventilação</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Qualidade do ar excelente hoje, sinta-se à vontade para ventilar a casa.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Dicas Gerais (Updated content & layout) -->
+<div class="widget-card p-8 rounded-[32px] border border-secondary/10 shadow-lg">
+<div class="flex items-center gap-4 mb-8 text-secondary border-b border-white/5 pb-4">
+<span class="material-symbols-outlined text-3xl">thermostat</span>
+<h4 class="font-label-md text-label-md uppercase tracking-[0.2em] font-bold">Dicas Gerais de Clima e Manutenção</h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="flex items-start gap-4">
+<div class="p-3 bg-primary/10 rounded-xl">
+<span class="material-symbols-outlined text-primary/80">air_freshener</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-white uppercase tracking-wider text-[10px]">Controle de Umidade</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Mantenha a ventilação cruzada para equilibrar a umidade interna, independente da chuva ou sol.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-3 bg-secondary/10 rounded-xl">
+<span class="material-symbols-outlined text-secondary/80">shield_with_house</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-white uppercase tracking-wider text-[10px]">Integridade do Lar</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Verifique regularmente a vedação de janelas e portas para otimizar o conforto térmico e prevenir infiltrações.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="p-3 bg-on-primary-container/10 rounded-xl">
+<span class="material-symbols-outlined text-on-primary-container/80">event_note</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-white uppercase tracking-wider text-[10px]">Planejamento Indoor</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">Adapte suas atividades internas baseando-se nas tendências climáticas semanais para melhor produtividade.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="w-full px-container-padding-desktop bg-surface/40 backdrop-blur-xl border-t border-white/5 py-10 mt-auto">
+<div class="max-w-7xl mx-auto w-full flex flex-col items-center text-center gap-10">
+<div class="flex flex-col items-center gap-6">
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-2">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-all cursor-pointer border-b border-transparent hover:border-primary/50 pb-1 uppercase tracking-widest" href="#">Automação</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-all cursor-pointer border-b border-transparent hover:border-primary/50 pb-1 uppercase tracking-widest" href="#">Privacidade</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-all cursor-pointer border-b border-transparent hover:border-primary/50 pb-1 uppercase tracking-widest" href="#">Suporte</a>
+</div>
+<p class="font-label-sm text-[10px] text-on-surface/40 uppercase tracking-[0.25em]">© 2026 ECOVIBE HOME OS. SISTEMAS OPERANTES.</p>
+</div>
+</div>
+</footer>
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sensor-sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+        const isHidden = sidebar.classList.contains('translate-x-full');
+        
+        if (isHidden) {
+            sidebar.classList.remove('translate-x-full');
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                overlay.classList.add('opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        } else {
+            sidebar.classList.add('translate-x-full');
+            overlay.classList.remove('opacity-100');
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = '';
+        }
+    }
+</script>
+</body></html>

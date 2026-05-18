@@ -1,0 +1,59 @@
+body {
+    background:
+        radial-gradient(circle at 0% 0%, rgba(26, 43, 69, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 100% 100%, rgba(38, 65, 145, 0.1) 0%, transparent 40%),
+        #0d0e10;
+
+    color: #e4e2e4;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+.glass-card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.01) 100%
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.widget-card {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(31, 31, 34, 0.8) 0%,
+            rgba(21, 21, 23, 0.9) 100%
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    transition: all 0.3s ease;
+}
+
+.widget-card:hover {
+    border-color: rgba(182, 199, 232, 0.3);
+    transform: translateY(-2px);
+}
+
+#sensor-sidebar {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#sensor-sidebar.translate-x-full {
+    transform: translateX(100%);
+}
