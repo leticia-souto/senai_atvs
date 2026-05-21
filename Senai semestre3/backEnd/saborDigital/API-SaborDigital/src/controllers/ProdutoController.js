@@ -29,7 +29,7 @@ class ProdutoController {
         }
     }
 
-    async cadastrarProduto(res, res){
+    async cadastrarProduto(req, res){
         try {
             const resultado = await ProdutoService.cadastrarProduto(req.body)
             res.json(resultado)
@@ -43,7 +43,7 @@ class ProdutoController {
         }
     }
 
-    async atualizarProduto(res, res){
+    async atualizarProduto(req, res){
         try {
             const resultado = await ProdutoService.atualizarProduto(req.params.id, req.body)
             res.json(resultado)

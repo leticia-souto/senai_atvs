@@ -1,5 +1,6 @@
-const produtoRepository = require('../repositories/produtoRepository')
 const ProdutoRepository = require('../repositories/produtoRepository')
+const fs = require('fs') // decodifica o base 64 e grava no disco como arquivo
+const path = require('path') // monta caminho dos arquivos do jeito certo
 
 class ProdutoService {
     async listarProdutos() {
@@ -12,8 +13,8 @@ class ProdutoService {
         }
     }
 
-    async burcarProdutosPorId(id) {
-        if (!id || isNaNI(id)) {
+    async buscarProdutosPorId(id) {
+        if (!id || isNaN(id)) {
             throw {
                 status: 400,
                 mensagem: 'ID inválido'
@@ -36,7 +37,7 @@ class ProdutoService {
     }
 
     async cadastrarProduto(dados) {
-        const { nome, descricao, preco, categoria, disponivel } = dados
+        const { nome, descricao, preco, categoria, disponivel, imagemProduto } = dados
 
         if (!nome || !descricao || preco === undefined) {
             throw {
@@ -45,11 +46,37 @@ class ProdutoService {
             }
         }
 
-        if (typeof preco !== Number || preco <= 0) {
+        if (typeof preco !== 'number' || preco <= 0) {
             throw {
                 status: 400,
                 mensagem: "Preço deve ser um número positivo."
             }
+        }
+
+        let caminhoImagem = null
+
+        if(imagemProduto){
+            if(!imagemProduto.startsWith('data:image')){
+                throw{
+                    status: 400,
+                    mensagem: 'Formato de imagem inválido.'
+                }
+            }
+
+            const base64Data = imagemProduto.replace(/^data:.+;base64,/, '')
+
+            const fileName = `${Date.now()}.png`
+            const uploadPath = path.join(__dirname, '..', '..', uploads)
+
+            if(!fs.existisSync(uploadPath)){
+                fs.mkdirSync(uploadPath)
+            }
+
+            const filePath = path.join(uploadPath, fileName)
+
+            fs.writeFileSync(filePath, base64Data, 'base64')
+
+            caminhoImagem = `uploads/${fileName}`
         }
 
         const novoProduto = {
@@ -57,7 +84,8 @@ class ProdutoService {
             descricao: descricao.trim(),
             preco,
             categoria: categoria || null,
-            disponivel: disponivel || true
+            disponivel: disponivel || true,
+            imagemProduto: caminhoImagem
         }
 
         const resultado = await ProdutoRepository.cadastrarProduto(novoProduto)
@@ -109,7 +137,7 @@ class ProdutoService {
         if (categoria !== undefined) produtoAtualizado.categoria = categoria
         if (disponivel !== undefined) produtoAtualizado.disponivel = disponivel
 
-        if (Object.keys(produtoAtualizado.length) === 0) {
+        if (Object.keys(produtoAtualizado).length === 0) {
             throw {
                 status: 400,
                 mensagem: "Nenhum dado para atualizar."
