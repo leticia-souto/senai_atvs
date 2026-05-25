@@ -1,8 +1,8 @@
 
 import { StyleSheet, View } from 'react-native';
-import FormularioExemplo from './text_input/formulario';
 import { NavigationContainer } from '@react-navigation/native';
-import StackNavigator from './navigation/exemplos/stack_navigator';
+import BottomTabNavigator from './navigation/exemplos/bottom_tab_navigator';
+import DrawerNavigator from './navigation/exemplos/drawer_navigator';
 
 
 
@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <StackNavigator/>
+      <DrawerNavigator/>
     </NavigationContainer>
 
   );

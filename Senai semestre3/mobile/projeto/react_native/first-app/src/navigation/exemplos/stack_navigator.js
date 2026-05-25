@@ -8,7 +8,7 @@ export default function StackNavigator(){
     return(
         <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={HomeScreen}/>
-            <Stack.Screen name="Detalhe" component={DetalheScreen}/>
+            {/* <Stack.Screen name="Detalhe" component={DetalheScreen}/> */}
         </Stack.Navigator>
     )
 }
