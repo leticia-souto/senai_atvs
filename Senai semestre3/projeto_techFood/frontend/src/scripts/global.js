@@ -53,8 +53,6 @@ function exibirNomeCliente() {
     : `${saudacao}! Qual o seu pedido?`;
 }
 
-
-
 function exibirBoasVindas() {
   if (sessionStorage.getItem("techfood_cliente")) return;
 

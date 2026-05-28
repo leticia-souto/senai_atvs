@@ -1,5 +1,3 @@
-const { error } = require("node:console")
-
 const BASE_URL = "http://localhost:3000"
 
 //1. buscar produtos
