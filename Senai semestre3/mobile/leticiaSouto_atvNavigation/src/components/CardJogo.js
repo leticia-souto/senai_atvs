@@ -1,52 +1,46 @@
 import { StyleSheet, Text, View } from "react-native";
 
-// Passe os parametros de forma correta e realize a estilização do componente
-
-export default function CardJogo({
-  titulo,
-  genero,
-  plataforma,
-  nota,
-}) {
+export default function CardJogo({ titulo, genero, plataforma, nota }) {
   return (
     <View style={styles.card}>
       <Text style={styles.titulo}>{titulo}</Text>
-
-      <Text style={styles.texto}>
-        Gênero: {genero}
-      </Text>
-
-      <Text style={styles.texto}>
-        Plataforma: {plataforma}
-      </Text>
-
-      <Text style={styles.texto}>
-        Nota: {nota}
-      </Text>
+      <Text style={styles.genero}>🏷️ {genero}</Text>
+      <Text style={styles.plataforma}>🎮 {plataforma}</Text>
+      <Text style={styles.nota}>⭐ {nota}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: "#1B1B2F",
+    backgroundColor: "#FFFEEA",
+    borderRadius: 20,
     padding: 16,
-    borderRadius: 14,
-    marginBottom: 14,
+    marginBottom: 16,
+    marginHorizontal: 16,
     borderWidth: 1,
-    borderColor: "#2D2D44",
+    borderColor: "#FFEAA7",
   },
-
   titulo: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#FFFFFF",
-    marginBottom: 10,
+    color: "#2D3436",
+    marginBottom: 8,
   },
-
-  texto: {
+  genero: {
     fontSize: 14,
-    color: "#B8B8D1",
+    color: "#2D3436",
     marginBottom: 4,
+  },
+  plataforma: {
+    fontSize: 14,
+    color: "#2D3436",
+    marginBottom: 4,
+  },
+  nota: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#FF7675",
+    marginTop: 4,
   },
 });

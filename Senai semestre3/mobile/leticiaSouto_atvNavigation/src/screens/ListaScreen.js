@@ -24,7 +24,7 @@ const jogosMock = [
   },
 ];
 
-export default function ListaScreen({ route }) {
+export default function ListaScreen({ route, navigation }) {
   const [itensSalvos, setItensSalvos] = useState(jogosMock);
 
   // Para receber um jogo salvo da DetalheScreen via route.params:
@@ -46,8 +46,15 @@ export default function ListaScreen({ route }) {
           // TODO: crie o arquivo src/components/CardJogo.js
           // O componente CardJogo deve receber as props: titulo, genero, plataforma e nota
           // Depois substitua este bloco por:
-          // <CardJogo titulo={{item.titulo} genero={item.genero} plataforma={item.plataforma} nota={item.nota}} />
-          <View style={styles.card} />
+          <View>
+            <CardJogo
+              titulo={item.titulo}
+              genero={item.genero}
+              plataforma={item.plataforma}
+              nota={item.nota}
+            />
+            <View style={styles.card} />
+          </View>
         )}
         ListEmptyComponent={
           <View style={styles.conteudo}>

@@ -62,11 +62,11 @@ export default function DetalheScreen({ route, navigation }) {
             style={[styles.botao, isSalvo && styles.botaoAtivo]}
             texto: isSalvo ? 'Remover da Lista' : 'Adicionar a Lista' */}
         <TouchableOpacity
-          onPress={() => setIsSalvo(prev => !prev)}
+          onPress={() => setIsSalvo((prev) => !prev)}
           style={[styles.botao, isSalvo && styles.botaoAtivo]}
         >
-          <Text style={styles.botaoTexto} >
-            {isSalvo ? 'Remover da Lista' : 'Adicionar a Lista'}
+          <Text style={styles.botaoTexto}>
+            {isSalvo ? "Remover da Lista" : "Adicionar a Lista"}
           </Text>
         </TouchableOpacity>
       </ScrollView>

@@ -1,7 +1,7 @@
 // Componente reutilizavel: BotaoAcao
 // Exemplo de componente extraido para a pasta components/
 // TODO: estilizar com as cores do seu tema
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function BotaoAcao({ texto, onPress, ativo }) {
   return (

@@ -80,11 +80,11 @@ export default function HomeScreen({navigation}) {
   // TODO: filtrar os jogos sempre que o valor de 'busca' mudar
   useEffect(() => {
     const resultado = jogos.filter((jogo) =>
-      jogo.titulo.toLowerCase().includes(busca.toLowerCase())
+      jogo.titulo.toLowerCase().includes(busca.toLowerCase()),
     );
     setJogosFiltrados(resultado);
   }, [busca]);
-
+  
   function renderItem({ item }) {
     return (
       <TouchableOpacity
