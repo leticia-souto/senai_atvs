@@ -1,32 +1,63 @@
+// URL da API que busca os produtos do seu backend (Node.js + MySQL)
+const API_CARDAPIO_URL = "http://localhost:3000/produtos";
+
 document.addEventListener("DOMContentLoaded", function () {
-    renderizarCardapio()
-    inicializarHoverCards()
-    inicializarVitrine()
+    renderizarCardapio();
+    inicializarVitrine();
+    atualizarContadorPedidos(); // Garante que o contador do menu inicia com o que está no localStorage
+});
 
-})
+// Busca os produtos diretamente do seu backend na porta 3000
+async function buscarProdutos() {
+    const resposta = await fetch(API_CARDAPIO_URL);
+    if (!resposta.ok) throw new Error("Erro ao buscar dados do servidor.");
+    return await resposta.json();
+}
 
+// Renderiza a vitrine de pratos dinamicamente
 async function renderizarCardapio() {
-    const grid = document.querySelector("#grid-cardapio")
+    const grid = document.querySelector("#grid-cardapio");
+    if (!grid) return;
 
-    if (!grid) return
-
-    grid.innerHTML = "<p class='loading'> Carregando cardápio... </p>"
+    grid.innerHTML = "<p class='loading'>Carregando cardápio...</p>";
 
     try {
-        const produtos = await buscarProdutos()
+        const respostaDeDados = await buscarProdutos();
+        
+        // 🔍 DEBUG: Mostra no Console do navegador exatamente o que o backend enviou
+        console.log("Dados recebidos do backend:", respostaDeDados);
 
-        grid.innerHTML = ""
+        // Proteção: Trata o retorno caso ele venha direto em Array ou envelopado pelo Express
+        let produtos = [];
+        if (Array.isArray(respostaDeDados)) {
+            produtos = respostaDeDados;
+        } else if (respostaDeDados && Array.isArray(respostaDeDados.produtos)) {
+            produtos = respostaDeDados.produtos;
+        } else if (respostaDeDados && Array.isArray(respostaDeDados.dados)) {
+            produtos = respostaDeDados.dados;
+        } else {
+            throw new Error("O backend não retornou uma lista válida de produtos.");
+        }
+
+        grid.innerHTML = "";
+
+        if (produtos.length === 0) {
+            grid.innerHTML = "<p class='loading'>Nenhum prato cadastrado no momento.</p>";
+            return;
+        }
 
         produtos.forEach(function (produto) {
+            const card = document.createElement("article");
+            card.classList.add("card");
+            card.setAttribute("data-id", produto.id);
 
-            const card = document.createElement("article")
-            card.classList.add("card")
-            card.setAttribute("data-id", produto.id)
+            // Imagem padrão caso o prato não possua foto cadastrada em Base64
+            const fotoExibir = produto.fotoBase64 || "src/images/default-plate.png";
 
             card.innerHTML =
-                //aqui teria uma tag img
+                `<img src="${fotoExibir}" alt="${produto.nome}" class="card-img"/>` +
                 `<h3>${produto.nome}</h3>` +
-                `<p class='desc'>${produto.descricao}</p>` +
+                `<p class='desc'>${produto.descricao || 'Sem descrição disponível.'}</p>` +
                 `<div class='quantidade-box'>` +
                 `<button class='btn-qtd btn-menos'>-</button>` +
                 `<span class='qtd-valor'>1</span>` +
@@ -35,18 +66,21 @@ async function renderizarCardapio() {
                 `<span class='preco' data-preco='${produto.preco}'>` +
                 `R$ ${parseFloat(produto.preco).toFixed(2).replace(".", ",")}` +
                 `</span>` +
-                `<button class='btn-pedido'>Pedir Agora</button>`
+                `<button class='btn-pedido'>Pedir Agora</button>`;
 
-            grid.appendChild(card)
+            grid.appendChild(card);
+        });
 
-        })
+        // Inicializa os efeitos visuais nos novos cards injetados
+        inicializarHoverCards();
 
     } catch (erro) {
-
-        grid.innerHTML = "<p class='loading erro'>Erro ao carregar o cardápio.Verifique se o servidor está rodando</p>"
+        console.error("Erro detalhado no processamento:", erro);
+        grid.innerHTML = "<p class='loading erro'>Erro ao carregar o cardápio. Verifique se o servidor backend está rodando.</p>";
     }
 }
 
+// Controla as animações de aproximação (Hover) nos cards
 function inicializarHoverCards() {
     const cards = document.querySelectorAll(".card");
     cards.forEach((card) => {
@@ -61,15 +95,13 @@ function inicializarHoverCards() {
     });
 }
 
+// Escuta os cliques de aumentar/diminuir quantidade e o botão de Pedir
 function inicializarVitrine() {
     const main = document.querySelector("main");
-
-    if (!main) return
+    if (!main) return;
 
     main.addEventListener("click", (event) => {
         const clicado = event.target;
-
-
 
         if (clicado.classList.contains("btn-menos")) {
             const box = clicado.parentElement;
@@ -88,28 +120,18 @@ function inicializarVitrine() {
             return;
         }
 
-
-
         if (clicado.classList.contains("btn-pedido")) {
             event.preventDefault();
-
             const card = clicado.parentElement;
+            const produtoId = Number(card.getAttribute("data-id"));
+            const quantidade = Number(card.querySelector(".qtd-valor").textContent);
 
-            const produtoId = Number(card.getAttribute("data-id"))
-            const quantidade = Number(card.querySelector("qtd-valor"))
-
-            // Feedback visual no botão (igual Aula 6 — alunos já conhecem)
-
-
-            //adicionar ação d salvarPeido()
-            salvarPedido(produtoId, quantidade, clicado)
-
-
-
+            salvarPedido(produtoId, quantidade, clicado);
         }
     });
 }
 
+// Atualiza o preço exibido no card proporcionalmente à quantidade selecionada
 function atualizarPrecoCard(box) {
     const card = box.parentElement;
     const spanPreco = card.querySelector(".preco");
@@ -118,18 +140,16 @@ function atualizarPrecoCard(box) {
 
     const total = precoUnitario * quantidade;
     spanPreco.textContent = "R$ " + total.toFixed(2).replace(".", ",");
-    spanPreco.style.color = total > 150 ? "#c0392b" : "#e67e22";
 }
 
+// Salva a intenção de compra temporariamente no LocalStorage do navegador
 function salvarPedido(produtoId, quantidade, botao) {
-    const card = botao.parentElement
-    const nome = card.querySelector("h3").textContent
-    const preco = parseFloat(card.querySelector(".preco").getAttribute("data-preco"))
-    const subtotal = preco * quantidade
+    const card = botao.parentElement;
+    const nome = card.querySelector("h3").textContent;
+    const preco = parseFloat(card.querySelector(".preco").getAttribute("data-preco"));
+    const subtotal = preco * quantidade;
 
-
-    //leu
-    const lista = JSON.parse(localStorage.getItem("techfood_pedidos") || "[]")
+    const lista = JSON.parse(localStorage.getItem("techfood_pedidos") || "[]");
 
     lista.push({
         produto_id: produtoId,
@@ -137,27 +157,31 @@ function salvarPedido(produtoId, quantidade, botao) {
         nome,
         preco,
         subtotal,
-    })
+    });
 
-    //salvou
-    localStorage.setItem("techfood_pedidos", JSON.stringify(lista))
+    localStorage.setItem("techfood_pedidos", JSON.stringify(lista));
 
-
-
+    // Feedback visual de sucesso temporário no botão
     botao.textContent = "✓ Adicionado!";
     botao.style.backgroundColor = "#27ae60";
     botao.disabled = true;
 
-    atualizarContadorPedidos()
+    atualizarContadorPedidos();
 
-    setTimeout(() => {
+    setTimeout(function () {
         botao.textContent = "Pedir Agora";
         botao.style.backgroundColor = "";
         botao.disabled = false;
-    }, 1500);
 
+        const box = card.querySelector(".quantidade-box");
+        if (box) {
+            box.querySelector(".qtd-valor").textContent = "1";
+            atualizarPrecoCard(box);
+        }
+    }, 1500);
 }
 
+// Altera o número indicador (badge) no menu superior da aplicação
 function atualizarContadorPedidos() {
     const lista = JSON.parse(localStorage.getItem("techfood_pedidos") || "[]");
     const total = lista.reduce(function (acc, p) { return acc + p.quantidade; }, 0);
