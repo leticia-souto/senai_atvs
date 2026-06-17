@@ -22,7 +22,8 @@
     font-size: 0.95rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     z-index: 500;
-    display: none; /* Controlado via JS mostrarToast() */
+    display: none;
+    /* Controlado via JS mostrarToast() */
     animation: entrarToast 0.3s ease;
 }
 
@@ -37,8 +38,15 @@
 }
 
 @keyframes entrarToast {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* ── Card Container Principal (Estrutura de 2 Colunas) ───── */
@@ -49,7 +57,7 @@
     padding: 30px;
     display: flex;
     gap: 40px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
     margin-top: 20px;
 }
 
@@ -227,7 +235,8 @@
 }
 
 .btn-principal:hover {
-    background: #d35400; /* Variação hover escura do laranja */
+    background: #d35400;
+    /* Variação hover escura do laranja */
 }
 
 .btn-secundario {
@@ -262,6 +271,7 @@
     }
 
     .btn-cadastro-grupo {
-        flex-direction: column-reverse; /* Inverte para o botão "Limpar" ficar por último no celular */
+        flex-direction: column-reverse;
+        /* Inverte para o botão "Limpar" ficar por último no celular */
     }
 }

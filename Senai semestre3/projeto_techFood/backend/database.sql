@@ -2,7 +2,7 @@
 
 -- 1. Criação do Banco de Dados
 CREATE DATABASE IF NOT EXISTS sabordigital;
-USE sabordigital;
+USE sabordigital_b;
 
 -- 2. Tabela de Produto (Prato/Bebida)
 CREATE TABLE IF NOT EXISTS produto (
