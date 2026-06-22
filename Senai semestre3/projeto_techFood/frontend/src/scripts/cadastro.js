@@ -131,7 +131,8 @@ function configurarCadastrar() {
       descricao: descricao,
       preco: preco,
       categoria: categoria,
-      fotoBase64: imagemBase64
+      fotoBase64: imagemBase64,
+      disponivel: true
     };
 
     console.log("Produto enviado:", produto);

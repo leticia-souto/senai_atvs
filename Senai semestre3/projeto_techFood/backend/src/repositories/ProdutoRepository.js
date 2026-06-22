@@ -29,7 +29,7 @@ class ProdutoRepository {
             preco,
             categoria,
             disponivel,
-            foto
+            imagemProduto
         } = produtoData;
 
         const [result] = await pool.query(
@@ -41,7 +41,7 @@ class ProdutoRepository {
                 preco,
                 categoria,
                 disponivel,
-                foto
+                imagemProduto
             )
             VALUES (?, ?, ?, ?, ?, ?)`,
 
@@ -51,7 +51,7 @@ class ProdutoRepository {
                 preco,
                 categoria,
                 disponivel,
-                foto
+                imagemProduto
             ]
         );
 

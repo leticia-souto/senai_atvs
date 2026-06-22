@@ -51,7 +51,7 @@ class ProdutoService {
             preco,
             categoria,
             disponivel,
-            foto
+            imagemProduto
         } = dados;
 
         if (!nome || !descricao || preco === undefined) {
@@ -79,7 +79,7 @@ class ProdutoService {
             preco,
             categoria: categoria || null,
             disponivel: disponivel ?? true,
-            foto: foto || null
+            imagemProduto: imagemProduto || null
 
         };
 
@@ -124,7 +124,7 @@ class ProdutoService {
             preco,
             categoria,
             disponivel,
-            foto
+            imagemProduto
         } = dados;
 
         if (nome !== undefined) {
@@ -157,8 +157,8 @@ class ProdutoService {
             atualizado.disponivel = disponivel;
         }
 
-        if (foto !== undefined) {
-            atualizado.foto = foto;
+        if (imagemProduto !== undefined) {
+            atualizado.imagemProduto = imagemProduto;
         }
 
         if (Object.keys(atualizado).length === 0) {
