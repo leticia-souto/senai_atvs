@@ -62,3 +62,6 @@ INSERT INTO produto (nome, descricao, preco, categoria, disponivel) VALUES
 ('Lasanha de Frango', 'Lasanha com frango desfiado e queijo', 42.00, 'Massa', true),
 ('Pizza Margherita', 'Pizza de mussarela, tomate e manjericão', 50.00, 'Pizza', true),
 ('Suco de Laranja', 'Suco natural 500ml', 12.00, 'Bebida', true);
+
+alter table produto add column imagemProduto varchar(255);
+select * from produto;
