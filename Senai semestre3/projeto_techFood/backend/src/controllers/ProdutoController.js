@@ -51,7 +51,7 @@ class ProdutoController {
 
       // --- LÓGICA DE UPLOAD DA FOTO (BASE64) ---
       // Se o usuário enviou uma foto em formato de texto (Base64)...
-      if (!dadosProduto.foto && dadosProduto.fotoBase64) {
+      if (!dadosProduto.imagemProduto && dadosProduto.fotoBase64) {
         // Define onde a foto vai morar (pasta uploads na raiz do projeto)
         const uploadDir = path.join(__dirname, "..", "..", "uploads");
 
@@ -75,7 +75,7 @@ class ProdutoController {
         }
 
         // Salva apenas o nome da foto nos dados que vão para o banco
-        dadosProduto.foto = nomeArquivo;
+        dadosProduto.imagemProduto = nomeArquivo;
 
         // Apaga o texto gigante (Base64) para o sistema não ficar pesado
         delete dadosProduto.fotoBase64;
