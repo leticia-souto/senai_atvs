@@ -74,13 +74,13 @@ const containerCardapio = document.querySelector('#cardapio');
 // Separar em função pequena facilita testar e trocar depois.
 function criarCardPrato(prato) {
   const card = document.createElement('div');
-  card.className = 'card';
+  card.className = 'card-prato p-4 bg-white rounded-xl shadow-sm h-full';
 
   // Template string: mais legível que concatenar com "+"
   card.innerHTML = `
-    <h3>${prato.nome}</h3>
-    <span class="categoria">${prato.categoria}</span>
-    <div class="preco">${prato.formatarPreco()}</div>
+    <h3 class="fs-4 fw-bold text-dark mb-2">${prato.nome}</h3>
+    <span class="categoria fs-6 d-block mb-3">${prato.categoria}</span>
+    <div class="preco fs-5 fw-bold text-success">${prato.formatarPreco()}</div>
   `;
 
   /* Evento por card (PARTE 4).
