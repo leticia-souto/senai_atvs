@@ -1,0 +1,8 @@
+Aula de JWT - backEnd
+
+Service:
+criar duas const:
+bcrypt e jwt
+- definir uma chave secreta -> a sua escolha -> deve vir idealmente do .env, pois não deve ser subida no gitHub
+
+- JWT Web não aceita none, pois daria acesso indevido a qualquer um

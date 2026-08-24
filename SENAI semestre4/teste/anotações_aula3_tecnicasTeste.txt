@@ -1,0 +1,41 @@
+Técnicas de Teste
+
+O que é:
+- técnicas específicas para verificar um aspecto ou comportamento específico do sistema
+- Cada técnica tem um objetivo próprio -> encontrar um tipo específico de problema
+- Tipo de Teste = O que testar?
+- Nível de Teste = quando testar?
+- Técnica de Teste = Como testar?
+
+Teste de regressão:
+- testar novamente funcionalidades de já funcionavam depois da mudança no código -> que tem vinculo com as novas modificações.
+- "voltar um passo"
+- objetivo : garantir que uma correção ou nova feature não quebrou algo que já estava pronto.
+- EX: rede social adiciona "editar comentário" -> reexecuta os testes de criar e excluir comentários.
+
+Teste de Estresse:
+- testa o sistema em condições extremas, acima do limite normal de uso, para ver onde e como ele falha.
+- EX: rota de login -> acesso de 10.000 logins de uma vez -> sobrecarrega o sistema.
+- Objetivo: não é confirmar se funciona bem é descobrir o ponto limite do software.
+
+Teste de Performance:
+- Mede velocidade, tempo de resposta e uso de recursos -> sob uso normal (em um ambiente controlado)
+- Diferente do teste de estresse, aq o volume é realista, o foco é a qualidade da resposta.
+- EX: medir quanto tempo uma tela de resultados de busca demora para carregar com uso normal de usuários.
+
+Teste de recuperação:
+- verificar como o sistema se recupera depois de uma falha -> queda de energia, perda de conexão, crash do servidor.
+- avalia se os dados são preservados e se o sistema retorna de forma segura.
+- EX: desligar a energia de um totem de autoatendimento no meio de um pedido e checar se ele recupera o estado ao religar.
+
+Teste de Segurança:
+- Verifica se o sistema está protegendo corretamente os dados e funcionalidades de vulnerabilidades.
+- Testa autenticação, autorização, criptografia e proteção contra invasões.
+- EX: tentar acessar a área administrador de um site usando uma URL direta, sem estar logado como admin.
+
+Teste de Paralelo:
+- Compara o comportamento de duas versões de um sistema (antiga e a nova) rodando ao mesmo tempo, com as mesmas entradas.
+- Objetivo: garantir que a versão nova produz os mesmos resultados corretos que a antiga, antes de substituí-la de uma vez.
+- Usado por exemplo quando se corrige um bug.
+- Tudo deve ser feito de forma idêntica nas duas versões, para poder comparar na integra.
+- EX: Rodar o sistema antigo de uma folha de pagamento de uma empresa junto com o novo, comparando se os valores calculados batem. 
