@@ -56,7 +56,7 @@ export const cardapio = [
     picante: false,
     vegetariano: true,
     destaque: true,
-    disponivel: true
+    disponivel: false
   },
 
   {
